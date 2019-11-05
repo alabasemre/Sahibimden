@@ -36,7 +36,7 @@ namespace SahibimdenBLL
                 sonuc += help.ExecuteNonQuery("INSERT INTO tbl_deger (ilan_id,kategori_id,deger) " +
                      "VALUES ((SELECT MAX(ilan_id) FROM tbl_ilan),(SELECT kategori_id FROM tbl_kategori" +
                      " WHERE ad=@kategori),ISNULL((SELECT kategori_id FROM tbl_kategori WHERE ad=@deger AND ust_kategori<>0),@deger))", p);
-            }
+            }//Deneme
 
             return sonuc == ozellik.GetLength(0);
         }
