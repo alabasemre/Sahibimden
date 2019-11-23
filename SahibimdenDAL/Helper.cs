@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace SahibimdenDAL
 {
-    public class Helper
+    public class Helper:IDisposable
     {
-        SqlConnection connection = null;
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
+        SqlCommand cmd = null;
 
         public int ExecuteNonQuery(string cmdText, SqlParameter[] p)
         {
             int sonuc = 0;
-
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
-            SqlCommand cmd = new SqlCommand(cmdText,connection);
+            
+            cmd = new SqlCommand(cmdText,connection);
 
             if (p!=null)
             {
@@ -27,9 +27,22 @@ namespace SahibimdenDAL
 
             OpenConnection();
             sonuc = cmd.ExecuteNonQuery();
-            CloseConnection();
+            //CloseConnection();
 
             return sonuc;
+        }
+
+        public SqlDataReader ExecuteReader(string cmdtext, SqlParameter[] p)
+        {
+            //SqlCommand cmd = new SqlCommand(cmdtext, cn);
+            cmd = new SqlCommand(cmdtext, connection);
+            if (p != null)
+            {
+                cmd.Parameters.AddRange(p);
+            }
+
+            OpenConnection();
+            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
         private void OpenConnection()
@@ -58,6 +71,15 @@ namespace SahibimdenDAL
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void Dispose()
+        {
+            if (connection != null && cmd != null)
+            {
+                connection.Dispose();
+                cmd.Dispose();
             }
         }
     }

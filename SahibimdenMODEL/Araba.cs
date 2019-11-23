@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace SahibimdenMODEL
 {
-    public class Ilan
+    public class Araba
     {
-        public int IlanId { get; set; }
-        public string Aciklama { get; set; }
-        public DateTime IlanTarihi { get; set; }
         public int ArabaId { get; set; }
-
+        public string Ad { get; set; }
+        public int UstKategori { get; set; }
     }
 }

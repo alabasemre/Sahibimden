@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArabaBL.cs" />
+    <Compile Include="IlanBL.cs" />
+    <Compile Include="KategoriBL.cs" />
+    <Compile Include="OzellikBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
