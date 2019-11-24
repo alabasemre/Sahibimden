@@ -12,10 +12,8 @@ namespace SahibimdenBLL
     public class OzellikBL:IDisposable
     {
         Helper help = new Helper();
-
         public bool ArabaOzellikEkle(Ozellik ozellik)
-        {
-            Helper help = new Helper();
+        {          
             int sonuc = 0;          
 
             SqlParameter[] p = { new SqlParameter("@kategori", ozellik.kategori_id), new SqlParameter("@deger", ozellik.deger) };

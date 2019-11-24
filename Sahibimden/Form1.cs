@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Sahibimden
         ArabaBL araba = null;
         IlanBL ilanBL = null;
         OzellikBL ozellikBL = null;
-
+        string resimYolu=string.Empty;
         public MenuForm()
         {
             InitializeComponent();
@@ -142,15 +143,23 @@ namespace Sahibimden
         {
             try
             {
-                if (IlanKontrol() && OzellikKontrol())
+                if (IlanKontrol() && OzellikKontrol() && resimYolu != string.Empty)
                 {
-                    IlanOlustur();
-                    SetOzellik();
-                    MessageBox.Show("Ekleme Başarılı");
+                    if (MessageBox.Show("Ekleme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo)==DialogResult.Yes) 
+                    {
+                        IlanOlustur();
+                        SetOzellik();
+                        ResimEkle();
+                        MessageBox.Show("Ekleme Başarılı");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ekleme İptal Edildi");
+                    }                 
                 }
                 else
                 {
-                    MessageBox.Show("Araba Seçimi Yapın ve Boş Alanları Doldurun");
+                    MessageBox.Show("Araba Seçimi Yapın ve Boş Alanları Doldurun Resim Eklemeyi Unutmayın....");
                 }
 
             }
@@ -244,5 +253,32 @@ namespace Sahibimden
 
             return kontrol;
         }
+
+        private void btnResimEkle_Click(object sender, EventArgs e)
+        {
+            dialogResim.Title = "Resim Seçimi";
+            dialogResim.Filter= "Jpeg Dosyası (*.jpg)|*.jpg";
+            if (dialogResim.ShowDialog()==DialogResult.OK)
+            {
+                picBoxAraba.Image = Image.FromFile(dialogResim.FileName);
+                resimYolu = dialogResim.FileName.ToString();
+            }
+        }
+
+        private void ResimEkle()
+        {
+            FileStream fs = new FileStream(resimYolu,FileMode.Open,FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            byte[] resim = br.ReadBytes((int)fs.Length);
+            br.Close();
+            br.Dispose();
+            fs.Close();
+            fs.Dispose();
+
+            ResimBL resimBL = new ResimBL();
+            resimBL.ResimEkle(resim);
+            resimBL.Dispose();
+        }
+   
     }
 }
