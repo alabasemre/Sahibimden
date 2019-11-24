@@ -25,7 +25,7 @@ namespace Sahibimden
         OzellikBL ozellikBL = null;
         ResimBL resimBL = null;
         ListeBL listeBL = null;
-        string resimYolu=string.Empty;
+        string resimYolu = string.Empty;
 
         public MenuForm()
         {
@@ -36,10 +36,9 @@ namespace Sahibimden
         {
             GetMarka();
             FormOlustur();
-            CBoxOlustur();            
+            CBoxOlustur();
             ListeYenile();
         }
-
         private void GetMarka()
         {
             araba = new ArabaBL();
@@ -151,7 +150,7 @@ namespace Sahibimden
             {
                 if (IlanKontrol() && OzellikKontrol() && resimYolu != string.Empty)
                 {
-                    if (MessageBox.Show("Ekleme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo)==DialogResult.Yes) 
+                    if (MessageBox.Show("Ekleme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         IlanOlustur();
                         SetOzellik();
@@ -162,7 +161,7 @@ namespace Sahibimden
                     else
                     {
                         MessageBox.Show("Ekleme İptal Edildi");
-                    }                 
+                    }
                 }
                 else
                 {
@@ -190,33 +189,49 @@ namespace Sahibimden
         private void SetOzellik()
         {
             ozellikBL = new OzellikBL();
-
-            for (int i = 0; i < kategoriler.Count; i++)
+            try
             {
-                Ozellik ozellik = new Ozellik();
-                ozellik.kategori_id = kategoriler[i].KategoriId;
-                if (pnlBoxs.Controls[i] is TextBox)
+                for (int i = 0; i < kategoriler.Count; i++)
                 {
-                    ozellik.deger = pnlBoxs.Controls[i].Text;
+                    Ozellik ozellik = new Ozellik();
+                    ozellik.kategori_id = kategoriler[i].KategoriId;
+                    if (pnlBoxs.Controls[i] is TextBox)
+                    {
+                        ozellik.deger = pnlBoxs.Controls[i].Text;
+                    }
+                    else
+                    {
+                        ComboBox cmb = (ComboBox)pnlBoxs.Controls[i];
+                        ozellik.deger = cmb.SelectedValue.ToString();
+                    }
+                    ozellikBL.ArabaOzellikEkle(ozellik);
                 }
-                else
-                {
-                    ComboBox cmb = (ComboBox)pnlBoxs.Controls[i];
-                    ozellik.deger = cmb.SelectedValue.ToString();
-                }
-                ozellikBL.ArabaOzellikEkle(ozellik);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         private void IlanOlustur()
         {
-            ilanBL = new IlanBL();
-            Ilan iln = new Ilan();
+            try
+            {
+                ilanBL = new IlanBL();
+                Ilan iln = new Ilan();
 
-            iln.Aciklama = richBoxAciklama.Text;
-            iln.ArabaId = (int)cmbModel.SelectedValue;
+                iln.Aciklama = richBoxAciklama.Text;
+                iln.ArabaId = (int)cmbModel.SelectedValue;
 
-            ilanBL.IlanEkle(iln);
+                ilanBL.IlanEkle(iln);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         private bool IlanKontrol()
@@ -246,7 +261,7 @@ namespace Sahibimden
                     {
                         int.Parse(pnlBoxs.Controls[i].Text.Trim());
                         if (pnlBoxs.Controls[i].Text.Trim() == "")
-                        {                            
+                        {
                             kontrol = false;
                             break;
                         }
@@ -264,8 +279,8 @@ namespace Sahibimden
         private void btnResimEkle_Click(object sender, EventArgs e)
         {
             dialogResim.Title = "Resim Seçimi";
-            dialogResim.Filter= "Jpeg Dosyası (*.jpg)|*.jpg";
-            if (dialogResim.ShowDialog()==DialogResult.OK)
+            dialogResim.Filter = "Jpeg Dosyası (*.jpg)|*.jpg";
+            if (dialogResim.ShowDialog() == DialogResult.OK)
             {
                 picBoxAraba.Image = Image.FromFile(dialogResim.FileName);
                 resimYolu = dialogResim.FileName.ToString();
@@ -274,7 +289,7 @@ namespace Sahibimden
 
         private void ResimEkle()
         {
-            FileStream fs = new FileStream(resimYolu,FileMode.Open,FileAccess.Read);
+            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fs);
             byte[] resim = br.ReadBytes((int)fs.Length);
             br.Close();
@@ -286,21 +301,19 @@ namespace Sahibimden
             resimBL.ResimEkle(resim);
             resimBL.Dispose();
         }
-      
+
         private void dgvilan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-        }     
+
+        }
 
         void CBoxOlustur()
         {
-            kategori = new KategoriBL();
-
             for (int i = 0; i < kategoriler.Count; i++)
             {
                 CheckBox cbox = new CheckBox();
-                cbox.Text = kategoriler[i].Ad;                
-                cbox.Location = new Point(20,i*20+20);
+                cbox.Text = kategoriler[i].Ad;
+                cbox.Location = new Point(20, i * 20 + 20);
                 cbox.CheckedChanged += Cbox_CheckedChanged;
                 gbxChecks.Controls.Add(cbox);
             }
@@ -331,17 +344,27 @@ namespace Sahibimden
 
         void ListeYenile()
         {
-            listeBL = new ListeBL();
+            try
+            {
+                listeBL = new ListeBL();
 
-            dgvilan.DataSource = listeBL.Listele();
+                dgvilan.DataSource = listeBL.Listele();
 
-            dgvilan.Columns["IlanId"].Visible = false;
+                dgvilan.Columns["IlanId"].Visible = false;
 
-            DataGridViewColumn col = dgvilan.Columns[1];
-            //col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;         
-            ((DataGridViewImageColumn)dgvilan.Columns[1]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+                DataGridViewColumn col = dgvilan.Columns[1];
+                //col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;         
+                ((DataGridViewImageColumn)dgvilan.Columns[1]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+            }
+            catch (Exception)
+            {
 
-            listeBL.Dispose();
+                throw;
+            }
+            finally
+            {
+                listeBL.Dispose();
+            }
         }
     }
 }

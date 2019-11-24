@@ -27,12 +27,12 @@ namespace SahibimdenBLL
             List<Resim> resimler = new List<Resim>();
 
             SqlDataReader dr = help.ExecuteReader("SELECT resim FROM tbl_resim", null);
-
+            MemoryStream ms=null;
             while (dr.Read())
             {
                 byte[] resim = (byte[])dr["resim"];
 
-                MemoryStream ms = new MemoryStream(resim, 0, resim.Length);
+                ms = new MemoryStream(resim, 0, resim.Length);
                 ms.Write(resim, 0, resim.Length);
 
                 resimler.Add
@@ -44,6 +44,7 @@ namespace SahibimdenBLL
                 );
             }
             dr.Close();
+            ms.Dispose();
             return resimler;
         }
 
