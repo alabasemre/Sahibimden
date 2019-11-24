@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAracEkle = new System.Windows.Forms.TabPage();
             this.gbxAciklama = new System.Windows.Forms.GroupBox();
             this.pnlAciklama = new System.Windows.Forms.Panel();
@@ -49,9 +51,10 @@
             this.tabMenu = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dialogResim = new System.Windows.Forms.OpenFileDialog();
+            this.pnlCBoxs = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dgvilan = new System.Windows.Forms.DataGridView();
-            this.cbKilometre = new System.Windows.Forms.CheckBox();
-            this.cbFiyat = new System.Windows.Forms.CheckBox();
+            this.gbxChecks = new System.Windows.Forms.GroupBox();
             this.tabAracEkle.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
             this.pnlAciklama.SuspendLayout();
@@ -60,6 +63,8 @@
             this.gbxBilgi.SuspendLayout();
             this.tabMenu.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.pnlCBoxs.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +76,7 @@
             this.tabAracEkle.Location = new System.Drawing.Point(4, 22);
             this.tabAracEkle.Name = "tabAracEkle";
             this.tabAracEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAracEkle.Size = new System.Drawing.Size(810, 464);
+            this.tabAracEkle.Size = new System.Drawing.Size(916, 464);
             this.tabAracEkle.TabIndex = 0;
             this.tabAracEkle.Text = "Araç Ekleme";
             this.tabAracEkle.UseVisualStyleBackColor = true;
@@ -84,7 +89,7 @@
             this.gbxAciklama.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxAciklama.Location = new System.Drawing.Point(3, 150);
             this.gbxAciklama.Name = "gbxAciklama";
-            this.gbxAciklama.Size = new System.Drawing.Size(511, 311);
+            this.gbxAciklama.Size = new System.Drawing.Size(617, 311);
             this.gbxAciklama.TabIndex = 9;
             this.gbxAciklama.TabStop = false;
             this.gbxAciklama.Text = "Açıklama";
@@ -98,7 +103,7 @@
             this.pnlAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAciklama.Location = new System.Drawing.Point(3, 19);
             this.pnlAciklama.Name = "pnlAciklama";
-            this.pnlAciklama.Size = new System.Drawing.Size(505, 289);
+            this.pnlAciklama.Size = new System.Drawing.Size(611, 289);
             this.pnlAciklama.TabIndex = 0;
             // 
             // btnKaydet
@@ -126,7 +131,7 @@
             this.richBoxAciklama.Dock = System.Windows.Forms.DockStyle.Top;
             this.richBoxAciklama.Location = new System.Drawing.Point(0, 0);
             this.richBoxAciklama.Name = "richBoxAciklama";
-            this.richBoxAciklama.Size = new System.Drawing.Size(505, 251);
+            this.richBoxAciklama.Size = new System.Drawing.Size(611, 251);
             this.richBoxAciklama.TabIndex = 0;
             this.richBoxAciklama.Text = "";
             // 
@@ -145,7 +150,7 @@
             this.grpAraba.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpAraba.Location = new System.Drawing.Point(3, 3);
             this.grpAraba.Name = "grpAraba";
-            this.grpAraba.Size = new System.Drawing.Size(511, 147);
+            this.grpAraba.Size = new System.Drawing.Size(617, 147);
             this.grpAraba.TabIndex = 8;
             this.grpAraba.TabStop = false;
             this.grpAraba.Text = "Araba Seçimi";
@@ -164,9 +169,9 @@
             // picBoxAraba
             // 
             this.picBoxAraba.BackColor = System.Drawing.Color.White;
-            this.picBoxAraba.Location = new System.Drawing.Point(258, 11);
+            this.picBoxAraba.Location = new System.Drawing.Point(298, 11);
             this.picBoxAraba.Name = "picBoxAraba";
-            this.picBoxAraba.Size = new System.Drawing.Size(243, 130);
+            this.picBoxAraba.Size = new System.Drawing.Size(280, 130);
             this.picBoxAraba.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxAraba.TabIndex = 6;
             this.picBoxAraba.TabStop = false;
@@ -235,7 +240,7 @@
             this.gbxBilgi.Controls.Add(this.pnlBoxs);
             this.gbxBilgi.Dock = System.Windows.Forms.DockStyle.Right;
             this.gbxBilgi.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxBilgi.Location = new System.Drawing.Point(514, 3);
+            this.gbxBilgi.Location = new System.Drawing.Point(620, 3);
             this.gbxBilgi.Name = "gbxBilgi";
             this.gbxBilgi.Size = new System.Drawing.Size(293, 458);
             this.gbxBilgi.TabIndex = 5;
@@ -268,17 +273,16 @@
             this.tabMenu.Location = new System.Drawing.Point(0, 0);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 0;
-            this.tabMenu.Size = new System.Drawing.Size(818, 490);
+            this.tabMenu.Size = new System.Drawing.Size(924, 490);
             this.tabMenu.TabIndex = 1;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.cbFiyat);
-            this.tabPage1.Controls.Add(this.cbKilometre);
-            this.tabPage1.Controls.Add(this.dgvilan);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.pnlCBoxs);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(810, 464);
+            this.tabPage1.Size = new System.Drawing.Size(916, 464);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "İlan Listesi";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -287,40 +291,71 @@
             // 
             this.dialogResim.FileName = "openFileDialog1";
             // 
+            // pnlCBoxs
+            // 
+            this.pnlCBoxs.Controls.Add(this.gbxChecks);
+            this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
+            this.pnlCBoxs.Name = "pnlCBoxs";
+            this.pnlCBoxs.Size = new System.Drawing.Size(166, 464);
+            this.pnlCBoxs.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvilan);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(166, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(750, 464);
+            this.panel1.TabIndex = 4;
+            // 
             // dgvilan
             // 
+            this.dgvilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvilan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvilan.Location = new System.Drawing.Point(208, 3);
+            this.dgvilan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvilan.Location = new System.Drawing.Point(0, 0);
             this.dgvilan.Name = "dgvilan";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvilan.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvilan.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dgvilan.RowTemplate.Height = 75;
-            this.dgvilan.Size = new System.Drawing.Size(594, 238);
-            this.dgvilan.TabIndex = 0;
+            this.dgvilan.RowTemplate.ReadOnly = true;
+            this.dgvilan.Size = new System.Drawing.Size(750, 464);
+            this.dgvilan.TabIndex = 1;
             // 
-            // cbKilometre
+            // gbxChecks
             // 
-            this.cbKilometre.AutoSize = true;
-            this.cbKilometre.Location = new System.Drawing.Point(40, 27);
-            this.cbKilometre.Name = "cbKilometre";
-            this.cbKilometre.Size = new System.Drawing.Size(69, 17);
-            this.cbKilometre.TabIndex = 1;
-            this.cbKilometre.Text = "Kilometre";
-            this.cbKilometre.UseVisualStyleBackColor = true;
-            // 
-            // cbFiyat
-            // 
-            this.cbFiyat.AutoSize = true;
-            this.cbFiyat.Location = new System.Drawing.Point(40, 51);
-            this.cbFiyat.Name = "cbFiyat";
-            this.cbFiyat.Size = new System.Drawing.Size(48, 17);
-            this.cbFiyat.TabIndex = 2;
-            this.cbFiyat.Text = "Fiyat";
-            this.cbFiyat.UseVisualStyleBackColor = true;
+            this.gbxChecks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxChecks.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxChecks.Location = new System.Drawing.Point(0, 0);
+            this.gbxChecks.Name = "gbxChecks";
+            this.gbxChecks.Size = new System.Drawing.Size(166, 464);
+            this.gbxChecks.TabIndex = 0;
+            this.gbxChecks.TabStop = false;
+            this.gbxChecks.Text = "Görüntülenen Özellikler";
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 490);
+            this.ClientSize = new System.Drawing.Size(924, 490);
             this.Controls.Add(this.tabMenu);
             this.Name = "MenuForm";
             this.Text = "Menu";
@@ -334,7 +369,8 @@
             this.gbxBilgi.ResumeLayout(false);
             this.tabMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.pnlCBoxs.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).EndInit();
             this.ResumeLayout(false);
 
@@ -363,9 +399,10 @@
         private System.Windows.Forms.Panel pnlBoxs;
         private System.Windows.Forms.OpenFileDialog dialogResim;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.CheckBox cbFiyat;
-        private System.Windows.Forms.CheckBox cbKilometre;
+        private System.Windows.Forms.Panel pnlCBoxs;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvilan;
+        private System.Windows.Forms.GroupBox gbxChecks;
     }
 }
 

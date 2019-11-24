@@ -12,6 +12,6 @@ namespace SahibimdenMODEL
         public string Aciklama { get; set; }
         public DateTime IlanTarihi { get; set; }
         public int ArabaId { get; set; }
-
+       
     }
 }

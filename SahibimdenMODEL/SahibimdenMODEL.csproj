@@ -45,6 +45,7 @@
     <Compile Include="Araba.cs" />
     <Compile Include="Ilan.cs" />
     <Compile Include="Kategori.cs" />
+    <Compile Include="ListeModel.cs" />
     <Compile Include="Ozellik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resim.cs" />

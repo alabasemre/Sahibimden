@@ -45,6 +45,7 @@
     <Compile Include="ArabaBL.cs" />
     <Compile Include="IlanBL.cs" />
     <Compile Include="KategoriBL.cs" />
+    <Compile Include="ListeBL.cs" />
     <Compile Include="OzellikBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResimBL.cs" />

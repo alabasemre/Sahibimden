@@ -11,6 +11,6 @@ namespace SahibimdenMODEL
         public int Id { get; set; }
         public int ilan_id { get; set; }
         public int kategori_id { get; set; }
-        public int deger { get; set; }
+        public string deger { get; set; }
     }
 }

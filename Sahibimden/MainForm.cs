@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,10 @@ namespace Sahibimden
         ArabaBL araba = null;
         IlanBL ilanBL = null;
         OzellikBL ozellikBL = null;
+        ResimBL resimBL = null;
+        ListeBL listeBL = null;
         string resimYolu=string.Empty;
+
         public MenuForm()
         {
             InitializeComponent();
@@ -32,6 +36,8 @@ namespace Sahibimden
         {
             GetMarka();
             FormOlustur();
+            CBoxOlustur();            
+            ListeYenile();
         }
 
         private void GetMarka()
@@ -151,6 +157,7 @@ namespace Sahibimden
                         SetOzellik();
                         ResimEkle();
                         MessageBox.Show("Ekleme Başarılı");
+                        ListeYenile();
                     }
                     else
                     {
@@ -190,12 +197,12 @@ namespace Sahibimden
                 ozellik.kategori_id = kategoriler[i].KategoriId;
                 if (pnlBoxs.Controls[i] is TextBox)
                 {
-                    ozellik.deger = int.Parse(pnlBoxs.Controls[i].Text);
+                    ozellik.deger = pnlBoxs.Controls[i].Text;
                 }
                 else
                 {
                     ComboBox cmb = (ComboBox)pnlBoxs.Controls[i];
-                    ozellik.deger = (int)cmb.SelectedValue;
+                    ozellik.deger = cmb.SelectedValue.ToString();
                 }
                 ozellikBL.ArabaOzellikEkle(ozellik);
             }
@@ -275,10 +282,66 @@ namespace Sahibimden
             fs.Close();
             fs.Dispose();
 
-            ResimBL resimBL = new ResimBL();
+            resimBL = new ResimBL();
             resimBL.ResimEkle(resim);
             resimBL.Dispose();
         }
-   
+      
+        private void dgvilan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }     
+
+        void CBoxOlustur()
+        {
+            kategori = new KategoriBL();
+
+            for (int i = 0; i < kategoriler.Count; i++)
+            {
+                CheckBox cbox = new CheckBox();
+                cbox.Text = kategoriler[i].Ad;                
+                cbox.Location = new Point(20,i*20+20);
+                cbox.CheckedChanged += Cbox_CheckedChanged;
+                gbxChecks.Controls.Add(cbox);
+            }
+        }
+
+        private void Cbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cbox = (CheckBox)sender;
+            if (cbox.Checked)
+            {
+                ozellikBL = new OzellikBL();
+
+                dgvilan.Columns.Add(cbox.Text, cbox.Text);
+
+                List<Ozellik> liste = ozellikBL.OzellikGetir(cbox.Text);
+
+                for (int i = 0; i < liste.Count; i++)
+                {
+                    dgvilan.Rows[i].Cells[cbox.Text].Value = liste[i].deger;
+                }
+                ozellikBL.Dispose();
+            }
+            else
+            {
+                dgvilan.Columns.Remove(cbox.Text);
+            }
+        }
+
+        void ListeYenile()
+        {
+            listeBL = new ListeBL();
+
+            dgvilan.DataSource = listeBL.Listele();
+
+            dgvilan.Columns["IlanId"].Visible = false;
+
+            DataGridViewColumn col = dgvilan.Columns[1];
+            //col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;         
+            ((DataGridViewImageColumn)dgvilan.Columns[1]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+            listeBL.Dispose();
+        }
     }
 }
