@@ -31,55 +31,75 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAracEkle = new System.Windows.Forms.TabPage();
+            this.pnlAciklamaHolder = new System.Windows.Forms.Panel();
             this.gbxAciklama = new System.Windows.Forms.GroupBox();
             this.pnlAciklama = new System.Windows.Forms.Panel();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.btnTemizle = new System.Windows.Forms.Button();
             this.richBoxAciklama = new System.Windows.Forms.RichTextBox();
+            this.pnlArabaSecimi = new System.Windows.Forms.Panel();
             this.grpAraba = new System.Windows.Forms.GroupBox();
             this.btnResimEkle = new System.Windows.Forms.Button();
             this.picBoxAraba = new System.Windows.Forms.PictureBox();
             this.cmbModel = new System.Windows.Forms.ComboBox();
             this.cmbSeri = new System.Windows.Forms.ComboBox();
             this.cmbMarka = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSeri = new System.Windows.Forms.Label();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.lblMarka = new System.Windows.Forms.Label();
+            this.pnlAracBilgisi = new System.Windows.Forms.Panel();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
             this.gbxBilgi = new System.Windows.Forms.GroupBox();
             this.pnlLabel = new System.Windows.Forms.Panel();
             this.pnlBoxs = new System.Windows.Forms.Panel();
             this.tabMenu = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tabListe = new System.Windows.Forms.TabPage();
+            this.pnlAracListesi = new System.Windows.Forms.Panel();
             this.dgvilan = new System.Windows.Forms.DataGridView();
             this.pnlCBoxs = new System.Windows.Forms.Panel();
             this.gbxChecks = new System.Windows.Forms.GroupBox();
             this.dialogResim = new System.Windows.Forms.OpenFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlBilgiUst = new System.Windows.Forms.Panel();
             this.tabAracEkle.SuspendLayout();
+            this.pnlAciklamaHolder.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
             this.pnlAciklama.SuspendLayout();
+            this.pnlArabaSecimi.SuspendLayout();
             this.grpAraba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAraba)).BeginInit();
+            this.pnlAracBilgisi.SuspendLayout();
             this.gbxBilgi.SuspendLayout();
             this.tabMenu.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tabListe.SuspendLayout();
+            this.pnlAracListesi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).BeginInit();
             this.pnlCBoxs.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlBilgiUst.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAracEkle
             // 
-            this.tabAracEkle.Controls.Add(this.gbxAciklama);
-            this.tabAracEkle.Controls.Add(this.grpAraba);
-            this.tabAracEkle.Controls.Add(this.gbxBilgi);
+            this.tabAracEkle.Controls.Add(this.pnlAciklamaHolder);
+            this.tabAracEkle.Controls.Add(this.pnlArabaSecimi);
+            this.tabAracEkle.Controls.Add(this.pnlAracBilgisi);
             this.tabAracEkle.Location = new System.Drawing.Point(4, 22);
             this.tabAracEkle.Name = "tabAracEkle";
             this.tabAracEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAracEkle.Size = new System.Drawing.Size(916, 464);
+            this.tabAracEkle.Size = new System.Drawing.Size(874, 463);
             this.tabAracEkle.TabIndex = 0;
             this.tabAracEkle.Text = "Araç Ekleme";
             this.tabAracEkle.UseVisualStyleBackColor = true;
+            // 
+            // pnlAciklamaHolder
+            // 
+            this.pnlAciklamaHolder.BackColor = System.Drawing.Color.DimGray;
+            this.pnlAciklamaHolder.Controls.Add(this.gbxAciklama);
+            this.pnlAciklamaHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAciklamaHolder.Location = new System.Drawing.Point(3, 153);
+            this.pnlAciklamaHolder.Name = "pnlAciklamaHolder";
+            this.pnlAciklamaHolder.Size = new System.Drawing.Size(576, 307);
+            this.pnlAciklamaHolder.TabIndex = 11;
             // 
             // gbxAciklama
             // 
@@ -87,9 +107,9 @@
             this.gbxAciklama.Controls.Add(this.pnlAciklama);
             this.gbxAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbxAciklama.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxAciklama.Location = new System.Drawing.Point(3, 150);
+            this.gbxAciklama.Location = new System.Drawing.Point(0, 0);
             this.gbxAciklama.Name = "gbxAciklama";
-            this.gbxAciklama.Size = new System.Drawing.Size(617, 311);
+            this.gbxAciklama.Size = new System.Drawing.Size(576, 307);
             this.gbxAciklama.TabIndex = 9;
             this.gbxAciklama.TabStop = false;
             this.gbxAciklama.Text = "Açıklama";
@@ -97,43 +117,31 @@
             // pnlAciklama
             // 
             this.pnlAciklama.BackColor = System.Drawing.Color.Gray;
-            this.pnlAciklama.Controls.Add(this.btnKaydet);
-            this.pnlAciklama.Controls.Add(this.btnTemizle);
             this.pnlAciklama.Controls.Add(this.richBoxAciklama);
             this.pnlAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAciklama.Location = new System.Drawing.Point(3, 19);
             this.pnlAciklama.Name = "pnlAciklama";
-            this.pnlAciklama.Size = new System.Drawing.Size(611, 289);
+            this.pnlAciklama.Size = new System.Drawing.Size(570, 285);
             this.pnlAciklama.TabIndex = 0;
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(223, 256);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(96, 28);
-            this.btnKaydet.TabIndex = 1;
-            this.btnKaydet.Text = "İlan Ekle";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
-            // 
-            // btnTemizle
-            // 
-            this.btnTemizle.Location = new System.Drawing.Point(110, 257);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(96, 27);
-            this.btnTemizle.TabIndex = 2;
-            this.btnTemizle.Text = "Temizle";
-            this.btnTemizle.UseVisualStyleBackColor = true;
             // 
             // richBoxAciklama
             // 
-            this.richBoxAciklama.Dock = System.Windows.Forms.DockStyle.Top;
+            this.richBoxAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richBoxAciklama.Location = new System.Drawing.Point(0, 0);
             this.richBoxAciklama.Name = "richBoxAciklama";
-            this.richBoxAciklama.Size = new System.Drawing.Size(611, 251);
+            this.richBoxAciklama.Size = new System.Drawing.Size(570, 285);
             this.richBoxAciklama.TabIndex = 0;
             this.richBoxAciklama.Text = "";
+            // 
+            // pnlArabaSecimi
+            // 
+            this.pnlArabaSecimi.BackColor = System.Drawing.Color.Gray;
+            this.pnlArabaSecimi.Controls.Add(this.grpAraba);
+            this.pnlArabaSecimi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlArabaSecimi.Location = new System.Drawing.Point(3, 3);
+            this.pnlArabaSecimi.Name = "pnlArabaSecimi";
+            this.pnlArabaSecimi.Size = new System.Drawing.Size(576, 150);
+            this.pnlArabaSecimi.TabIndex = 10;
             // 
             // grpAraba
             // 
@@ -143,14 +151,14 @@
             this.grpAraba.Controls.Add(this.cmbModel);
             this.grpAraba.Controls.Add(this.cmbSeri);
             this.grpAraba.Controls.Add(this.cmbMarka);
-            this.grpAraba.Controls.Add(this.label3);
-            this.grpAraba.Controls.Add(this.label2);
-            this.grpAraba.Controls.Add(this.label1);
-            this.grpAraba.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpAraba.Controls.Add(this.lblSeri);
+            this.grpAraba.Controls.Add(this.lblModel);
+            this.grpAraba.Controls.Add(this.lblMarka);
+            this.grpAraba.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpAraba.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpAraba.Location = new System.Drawing.Point(3, 3);
+            this.grpAraba.Location = new System.Drawing.Point(0, 0);
             this.grpAraba.Name = "grpAraba";
-            this.grpAraba.Size = new System.Drawing.Size(617, 147);
+            this.grpAraba.Size = new System.Drawing.Size(576, 150);
             this.grpAraba.TabIndex = 8;
             this.grpAraba.TabStop = false;
             this.grpAraba.Text = "Araba Seçimi";
@@ -158,7 +166,7 @@
             // btnResimEkle
             // 
             this.btnResimEkle.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnResimEkle.Location = new System.Drawing.Point(156, 104);
+            this.btnResimEkle.Location = new System.Drawing.Point(166, 106);
             this.btnResimEkle.Name = "btnResimEkle";
             this.btnResimEkle.Size = new System.Drawing.Size(96, 28);
             this.btnResimEkle.TabIndex = 7;
@@ -169,9 +177,9 @@
             // picBoxAraba
             // 
             this.picBoxAraba.BackColor = System.Drawing.Color.White;
-            this.picBoxAraba.Location = new System.Drawing.Point(298, 11);
+            this.picBoxAraba.Location = new System.Drawing.Point(301, 11);
             this.picBoxAraba.Name = "picBoxAraba";
-            this.picBoxAraba.Size = new System.Drawing.Size(280, 130);
+            this.picBoxAraba.Size = new System.Drawing.Size(272, 133);
             this.picBoxAraba.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxAraba.TabIndex = 6;
             this.picBoxAraba.TabStop = false;
@@ -181,7 +189,7 @@
             this.cmbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModel.Enabled = false;
             this.cmbModel.FormattingEnabled = true;
-            this.cmbModel.Location = new System.Drawing.Point(58, 74);
+            this.cmbModel.Location = new System.Drawing.Point(68, 76);
             this.cmbModel.Name = "cmbModel";
             this.cmbModel.Size = new System.Drawing.Size(194, 24);
             this.cmbModel.TabIndex = 5;
@@ -191,7 +199,7 @@
             this.cmbSeri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSeri.Enabled = false;
             this.cmbSeri.FormattingEnabled = true;
-            this.cmbSeri.Location = new System.Drawing.Point(58, 47);
+            this.cmbSeri.Location = new System.Drawing.Point(68, 49);
             this.cmbSeri.Name = "cmbSeri";
             this.cmbSeri.Size = new System.Drawing.Size(194, 24);
             this.cmbSeri.TabIndex = 4;
@@ -201,100 +209,134 @@
             // 
             this.cmbMarka.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarka.FormattingEnabled = true;
-            this.cmbMarka.Location = new System.Drawing.Point(58, 20);
+            this.cmbMarka.Location = new System.Drawing.Point(68, 22);
             this.cmbMarka.Name = "cmbMarka";
             this.cmbMarka.Size = new System.Drawing.Size(194, 24);
             this.cmbMarka.TabIndex = 3;
             this.cmbMarka.SelectedIndexChanged += new System.EventHandler(this.cmbMarka_SelectedIndexChanged);
             // 
-            // label3
+            // lblSeri
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Seri";
+            this.lblSeri.AutoSize = true;
+            this.lblSeri.Location = new System.Drawing.Point(19, 54);
+            this.lblSeri.Name = "lblSeri";
+            this.lblSeri.Size = new System.Drawing.Size(30, 16);
+            this.lblSeri.TabIndex = 2;
+            this.lblSeri.Text = "Seri";
             // 
-            // label2
+            // lblModel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Model";
+            this.lblModel.AutoSize = true;
+            this.lblModel.Location = new System.Drawing.Point(19, 79);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(43, 16);
+            this.lblModel.TabIndex = 1;
+            this.lblModel.Text = "Model";
             // 
-            // label1
+            // lblMarka
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Marka";
+            this.lblMarka.AutoSize = true;
+            this.lblMarka.Location = new System.Drawing.Point(19, 29);
+            this.lblMarka.Name = "lblMarka";
+            this.lblMarka.Size = new System.Drawing.Size(43, 16);
+            this.lblMarka.TabIndex = 0;
+            this.lblMarka.Text = "Marka";
+            // 
+            // pnlAracBilgisi
+            // 
+            this.pnlAracBilgisi.BackColor = System.Drawing.Color.DarkGray;
+            this.pnlAracBilgisi.Controls.Add(this.pnlBilgiUst);
+            this.pnlAracBilgisi.Controls.Add(this.panel1);
+            this.pnlAracBilgisi.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlAracBilgisi.Location = new System.Drawing.Point(579, 3);
+            this.pnlAracBilgisi.Name = "pnlAracBilgisi";
+            this.pnlAracBilgisi.Size = new System.Drawing.Size(292, 457);
+            this.pnlAracBilgisi.TabIndex = 8;
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTemizle.Location = new System.Drawing.Point(50, 5);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(96, 31);
+            this.btnTemizle.TabIndex = 2;
+            this.btnTemizle.Text = "Temizle";
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Location = new System.Drawing.Point(152, 5);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(96, 31);
+            this.btnKaydet.TabIndex = 1;
+            this.btnKaydet.Text = "İlan Ekle";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // gbxBilgi
             // 
+            this.gbxBilgi.BackColor = System.Drawing.Color.Silver;
             this.gbxBilgi.Controls.Add(this.pnlLabel);
             this.gbxBilgi.Controls.Add(this.pnlBoxs);
-            this.gbxBilgi.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbxBilgi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbxBilgi.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxBilgi.Location = new System.Drawing.Point(620, 3);
+            this.gbxBilgi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gbxBilgi.Location = new System.Drawing.Point(0, 0);
             this.gbxBilgi.Name = "gbxBilgi";
-            this.gbxBilgi.Size = new System.Drawing.Size(293, 458);
-            this.gbxBilgi.TabIndex = 5;
+            this.gbxBilgi.Size = new System.Drawing.Size(292, 418);
+            this.gbxBilgi.TabIndex = 6;
             this.gbxBilgi.TabStop = false;
             this.gbxBilgi.Text = "Araç Bilgisi";
             // 
             // pnlLabel
             // 
             this.pnlLabel.BackColor = System.Drawing.Color.Gray;
-            this.pnlLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLabel.Location = new System.Drawing.Point(3, 19);
             this.pnlLabel.Name = "pnlLabel";
-            this.pnlLabel.Size = new System.Drawing.Size(124, 436);
+            this.pnlLabel.Size = new System.Drawing.Size(125, 396);
             this.pnlLabel.TabIndex = 3;
             // 
             // pnlBoxs
             // 
             this.pnlBoxs.BackColor = System.Drawing.Color.Gray;
             this.pnlBoxs.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlBoxs.Location = new System.Drawing.Point(127, 19);
+            this.pnlBoxs.Location = new System.Drawing.Point(128, 19);
             this.pnlBoxs.Name = "pnlBoxs";
-            this.pnlBoxs.Size = new System.Drawing.Size(163, 436);
+            this.pnlBoxs.Size = new System.Drawing.Size(161, 396);
             this.pnlBoxs.TabIndex = 4;
             // 
             // tabMenu
             // 
             this.tabMenu.Controls.Add(this.tabAracEkle);
-            this.tabMenu.Controls.Add(this.tabPage1);
+            this.tabMenu.Controls.Add(this.tabListe);
             this.tabMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMenu.Location = new System.Drawing.Point(0, 0);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 0;
-            this.tabMenu.Size = new System.Drawing.Size(924, 490);
+            this.tabMenu.Size = new System.Drawing.Size(882, 489);
             this.tabMenu.TabIndex = 1;
             // 
-            // tabPage1
+            // tabListe
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.pnlCBoxs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(916, 464);
-            this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "İlan Listesi";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabListe.Controls.Add(this.pnlAracListesi);
+            this.tabListe.Controls.Add(this.pnlCBoxs);
+            this.tabListe.Location = new System.Drawing.Point(4, 22);
+            this.tabListe.Name = "tabListe";
+            this.tabListe.Size = new System.Drawing.Size(874, 463);
+            this.tabListe.TabIndex = 1;
+            this.tabListe.Text = "İlan Listesi";
+            this.tabListe.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // pnlAracListesi
             // 
-            this.panel1.Controls.Add(this.dgvilan);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(166, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 464);
-            this.panel1.TabIndex = 4;
+            this.pnlAracListesi.Controls.Add(this.dgvilan);
+            this.pnlAracListesi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAracListesi.Location = new System.Drawing.Point(166, 0);
+            this.pnlAracListesi.Name = "pnlAracListesi";
+            this.pnlAracListesi.Size = new System.Drawing.Size(708, 463);
+            this.pnlAracListesi.TabIndex = 4;
             // 
             // dgvilan
             // 
@@ -324,7 +366,7 @@
             this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dgvilan.RowTemplate.Height = 75;
             this.dgvilan.RowTemplate.ReadOnly = true;
-            this.dgvilan.Size = new System.Drawing.Size(750, 464);
+            this.dgvilan.Size = new System.Drawing.Size(708, 463);
             this.dgvilan.TabIndex = 1;
             // 
             // pnlCBoxs
@@ -333,7 +375,7 @@
             this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
             this.pnlCBoxs.Name = "pnlCBoxs";
-            this.pnlCBoxs.Size = new System.Drawing.Size(166, 464);
+            this.pnlCBoxs.Size = new System.Drawing.Size(166, 463);
             this.pnlCBoxs.TabIndex = 3;
             // 
             // gbxChecks
@@ -342,7 +384,7 @@
             this.gbxChecks.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxChecks.Location = new System.Drawing.Point(0, 0);
             this.gbxChecks.Name = "gbxChecks";
-            this.gbxChecks.Size = new System.Drawing.Size(166, 464);
+            this.gbxChecks.Size = new System.Drawing.Size(166, 463);
             this.gbxChecks.TabIndex = 0;
             this.gbxChecks.TabStop = false;
             this.gbxChecks.Text = "Görüntülenen Özellikler";
@@ -351,28 +393,53 @@
             // 
             this.dialogResim.FileName = "openFileDialog1";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnKaydet);
+            this.panel1.Controls.Add(this.btnTemizle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 418);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(292, 39);
+            this.panel1.TabIndex = 7;
+            // 
+            // pnlBilgiUst
+            // 
+            this.pnlBilgiUst.BackColor = System.Drawing.Color.DimGray;
+            this.pnlBilgiUst.Controls.Add(this.gbxBilgi);
+            this.pnlBilgiUst.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBilgiUst.Location = new System.Drawing.Point(0, 0);
+            this.pnlBilgiUst.Name = "pnlBilgiUst";
+            this.pnlBilgiUst.Size = new System.Drawing.Size(292, 418);
+            this.pnlBilgiUst.TabIndex = 8;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 490);
+            this.ClientSize = new System.Drawing.Size(882, 489);
             this.Controls.Add(this.tabMenu);
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabAracEkle.ResumeLayout(false);
+            this.pnlAciklamaHolder.ResumeLayout(false);
             this.gbxAciklama.ResumeLayout(false);
             this.pnlAciklama.ResumeLayout(false);
+            this.pnlArabaSecimi.ResumeLayout(false);
             this.grpAraba.ResumeLayout(false);
             this.grpAraba.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAraba)).EndInit();
+            this.pnlAracBilgisi.ResumeLayout(false);
             this.gbxBilgi.ResumeLayout(false);
             this.tabMenu.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.tabListe.ResumeLayout(false);
+            this.pnlAracListesi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).EndInit();
             this.pnlCBoxs.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.pnlBilgiUst.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -385,25 +452,30 @@
         private System.Windows.Forms.ComboBox cmbModel;
         private System.Windows.Forms.ComboBox cmbSeri;
         private System.Windows.Forms.ComboBox cmbMarka;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSeri;
+        private System.Windows.Forms.Label lblModel;
+        private System.Windows.Forms.Label lblMarka;
         private System.Windows.Forms.GroupBox gbxAciklama;
-        private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnKaydet;
-        private System.Windows.Forms.Panel pnlAciklama;
-        private System.Windows.Forms.RichTextBox richBoxAciklama;
         private System.Windows.Forms.Button btnResimEkle;
         private System.Windows.Forms.PictureBox picBoxAraba;
+        private System.Windows.Forms.OpenFileDialog dialogResim;
+        private System.Windows.Forms.TabPage tabListe;
+        private System.Windows.Forms.Panel pnlCBoxs;
+        private System.Windows.Forms.Panel pnlAracListesi;
+        private System.Windows.Forms.DataGridView dgvilan;
+        private System.Windows.Forms.GroupBox gbxChecks;
+        private System.Windows.Forms.Panel pnlAciklamaHolder;
+        private System.Windows.Forms.Panel pnlAciklama;
+        private System.Windows.Forms.RichTextBox richBoxAciklama;
+        private System.Windows.Forms.Panel pnlArabaSecimi;
+        private System.Windows.Forms.Panel pnlAracBilgisi;
+        private System.Windows.Forms.Button btnTemizle;
+        private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.GroupBox gbxBilgi;
         private System.Windows.Forms.Panel pnlLabel;
         private System.Windows.Forms.Panel pnlBoxs;
-        private System.Windows.Forms.OpenFileDialog dialogResim;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Panel pnlCBoxs;
+        private System.Windows.Forms.Panel pnlBilgiUst;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvilan;
-        private System.Windows.Forms.GroupBox gbxChecks;
     }
 }
 
