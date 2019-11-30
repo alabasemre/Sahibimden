@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAracEkle = new System.Windows.Forms.TabPage();
             this.pnlAciklamaHolder = new System.Windows.Forms.Panel();
             this.gbxAciklama = new System.Windows.Forms.GroupBox();
@@ -88,10 +88,10 @@
             this.tabAracEkle.Controls.Add(this.pnlAciklamaHolder);
             this.tabAracEkle.Controls.Add(this.pnlArabaSecimi);
             this.tabAracEkle.Controls.Add(this.pnlAracBilgisi);
-            this.tabAracEkle.Location = new System.Drawing.Point(4, 22);
+            this.tabAracEkle.Location = new System.Drawing.Point(4, 23);
             this.tabAracEkle.Name = "tabAracEkle";
             this.tabAracEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAracEkle.Size = new System.Drawing.Size(874, 463);
+            this.tabAracEkle.Size = new System.Drawing.Size(888, 450);
             this.tabAracEkle.TabIndex = 0;
             this.tabAracEkle.Text = "Araç Ekleme";
             this.tabAracEkle.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             this.pnlAciklamaHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAciklamaHolder.Location = new System.Drawing.Point(3, 153);
             this.pnlAciklamaHolder.Name = "pnlAciklamaHolder";
-            this.pnlAciklamaHolder.Size = new System.Drawing.Size(576, 307);
+            this.pnlAciklamaHolder.Size = new System.Drawing.Size(590, 294);
             this.pnlAciklamaHolder.TabIndex = 11;
             // 
             // gbxAciklama
@@ -114,7 +114,7 @@
             this.gbxAciklama.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxAciklama.Location = new System.Drawing.Point(0, 0);
             this.gbxAciklama.Name = "gbxAciklama";
-            this.gbxAciklama.Size = new System.Drawing.Size(576, 307);
+            this.gbxAciklama.Size = new System.Drawing.Size(590, 294);
             this.gbxAciklama.TabIndex = 9;
             this.gbxAciklama.TabStop = false;
             this.gbxAciklama.Text = "Açıklama";
@@ -126,7 +126,7 @@
             this.pnlAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAciklama.Location = new System.Drawing.Point(3, 19);
             this.pnlAciklama.Name = "pnlAciklama";
-            this.pnlAciklama.Size = new System.Drawing.Size(570, 285);
+            this.pnlAciklama.Size = new System.Drawing.Size(584, 272);
             this.pnlAciklama.TabIndex = 0;
             // 
             // richBoxAciklama
@@ -134,7 +134,7 @@
             this.richBoxAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richBoxAciklama.Location = new System.Drawing.Point(0, 0);
             this.richBoxAciklama.Name = "richBoxAciklama";
-            this.richBoxAciklama.Size = new System.Drawing.Size(570, 285);
+            this.richBoxAciklama.Size = new System.Drawing.Size(584, 272);
             this.richBoxAciklama.TabIndex = 0;
             this.richBoxAciklama.Text = "";
             // 
@@ -145,12 +145,12 @@
             this.pnlArabaSecimi.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlArabaSecimi.Location = new System.Drawing.Point(3, 3);
             this.pnlArabaSecimi.Name = "pnlArabaSecimi";
-            this.pnlArabaSecimi.Size = new System.Drawing.Size(576, 150);
+            this.pnlArabaSecimi.Size = new System.Drawing.Size(590, 150);
             this.pnlArabaSecimi.TabIndex = 10;
             // 
             // grpAraba
             // 
-            this.grpAraba.BackColor = System.Drawing.Color.Gray;
+            this.grpAraba.BackColor = System.Drawing.SystemColors.ControlLight;
             this.grpAraba.Controls.Add(this.btnResimEkle);
             this.grpAraba.Controls.Add(this.picBoxAraba);
             this.grpAraba.Controls.Add(this.cmbModel);
@@ -160,10 +160,10 @@
             this.grpAraba.Controls.Add(this.lblModel);
             this.grpAraba.Controls.Add(this.lblMarka);
             this.grpAraba.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpAraba.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpAraba.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpAraba.Location = new System.Drawing.Point(0, 0);
             this.grpAraba.Name = "grpAraba";
-            this.grpAraba.Size = new System.Drawing.Size(576, 150);
+            this.grpAraba.Size = new System.Drawing.Size(590, 150);
             this.grpAraba.TabIndex = 8;
             this.grpAraba.TabStop = false;
             this.grpAraba.Text = "Araba Seçimi";
@@ -196,7 +196,7 @@
             this.cmbModel.FormattingEnabled = true;
             this.cmbModel.Location = new System.Drawing.Point(68, 76);
             this.cmbModel.Name = "cmbModel";
-            this.cmbModel.Size = new System.Drawing.Size(194, 24);
+            this.cmbModel.Size = new System.Drawing.Size(194, 22);
             this.cmbModel.TabIndex = 5;
             // 
             // cmbSeri
@@ -206,7 +206,7 @@
             this.cmbSeri.FormattingEnabled = true;
             this.cmbSeri.Location = new System.Drawing.Point(68, 49);
             this.cmbSeri.Name = "cmbSeri";
-            this.cmbSeri.Size = new System.Drawing.Size(194, 24);
+            this.cmbSeri.Size = new System.Drawing.Size(194, 22);
             this.cmbSeri.TabIndex = 4;
             this.cmbSeri.SelectedIndexChanged += new System.EventHandler(this.cmbSeri_SelectedIndexChanged);
             // 
@@ -216,7 +216,7 @@
             this.cmbMarka.FormattingEnabled = true;
             this.cmbMarka.Location = new System.Drawing.Point(68, 22);
             this.cmbMarka.Name = "cmbMarka";
-            this.cmbMarka.Size = new System.Drawing.Size(194, 24);
+            this.cmbMarka.Size = new System.Drawing.Size(194, 22);
             this.cmbMarka.TabIndex = 3;
             this.cmbMarka.SelectedIndexChanged += new System.EventHandler(this.cmbMarka_SelectedIndexChanged);
             // 
@@ -225,7 +225,7 @@
             this.lblSeri.AutoSize = true;
             this.lblSeri.Location = new System.Drawing.Point(19, 54);
             this.lblSeri.Name = "lblSeri";
-            this.lblSeri.Size = new System.Drawing.Size(30, 16);
+            this.lblSeri.Size = new System.Drawing.Size(29, 14);
             this.lblSeri.TabIndex = 2;
             this.lblSeri.Text = "Seri";
             // 
@@ -234,7 +234,7 @@
             this.lblModel.AutoSize = true;
             this.lblModel.Location = new System.Drawing.Point(19, 79);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(43, 16);
+            this.lblModel.Size = new System.Drawing.Size(41, 14);
             this.lblModel.TabIndex = 1;
             this.lblModel.Text = "Model";
             // 
@@ -243,7 +243,7 @@
             this.lblMarka.AutoSize = true;
             this.lblMarka.Location = new System.Drawing.Point(19, 29);
             this.lblMarka.Name = "lblMarka";
-            this.lblMarka.Size = new System.Drawing.Size(43, 16);
+            this.lblMarka.Size = new System.Drawing.Size(42, 14);
             this.lblMarka.TabIndex = 0;
             this.lblMarka.Text = "Marka";
             // 
@@ -253,9 +253,9 @@
             this.pnlAracBilgisi.Controls.Add(this.pnlBilgiUst);
             this.pnlAracBilgisi.Controls.Add(this.pnlButtons);
             this.pnlAracBilgisi.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlAracBilgisi.Location = new System.Drawing.Point(579, 3);
+            this.pnlAracBilgisi.Location = new System.Drawing.Point(593, 3);
             this.pnlAracBilgisi.Name = "pnlAracBilgisi";
-            this.pnlAracBilgisi.Size = new System.Drawing.Size(292, 457);
+            this.pnlAracBilgisi.Size = new System.Drawing.Size(292, 444);
             this.pnlAracBilgisi.TabIndex = 8;
             // 
             // pnlBilgiUst
@@ -265,20 +265,20 @@
             this.pnlBilgiUst.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBilgiUst.Location = new System.Drawing.Point(0, 0);
             this.pnlBilgiUst.Name = "pnlBilgiUst";
-            this.pnlBilgiUst.Size = new System.Drawing.Size(292, 418);
+            this.pnlBilgiUst.Size = new System.Drawing.Size(292, 405);
             this.pnlBilgiUst.TabIndex = 8;
             // 
             // gbxBilgi
             // 
-            this.gbxBilgi.BackColor = System.Drawing.Color.Silver;
+            this.gbxBilgi.BackColor = System.Drawing.Color.Gainsboro;
             this.gbxBilgi.Controls.Add(this.pnlLabel);
             this.gbxBilgi.Controls.Add(this.pnlBoxs);
             this.gbxBilgi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbxBilgi.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxBilgi.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxBilgi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.gbxBilgi.Location = new System.Drawing.Point(0, 0);
             this.gbxBilgi.Name = "gbxBilgi";
-            this.gbxBilgi.Size = new System.Drawing.Size(292, 418);
+            this.gbxBilgi.Size = new System.Drawing.Size(292, 405);
             this.gbxBilgi.TabIndex = 6;
             this.gbxBilgi.TabStop = false;
             this.gbxBilgi.Text = "Araç Bilgisi";
@@ -287,18 +287,18 @@
             // 
             this.pnlLabel.BackColor = System.Drawing.Color.Gray;
             this.pnlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLabel.Location = new System.Drawing.Point(3, 19);
+            this.pnlLabel.Location = new System.Drawing.Point(3, 18);
             this.pnlLabel.Name = "pnlLabel";
-            this.pnlLabel.Size = new System.Drawing.Size(125, 396);
+            this.pnlLabel.Size = new System.Drawing.Size(125, 384);
             this.pnlLabel.TabIndex = 3;
             // 
             // pnlBoxs
             // 
             this.pnlBoxs.BackColor = System.Drawing.Color.Gray;
             this.pnlBoxs.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlBoxs.Location = new System.Drawing.Point(128, 19);
+            this.pnlBoxs.Location = new System.Drawing.Point(128, 18);
             this.pnlBoxs.Name = "pnlBoxs";
-            this.pnlBoxs.Size = new System.Drawing.Size(161, 396);
+            this.pnlBoxs.Size = new System.Drawing.Size(161, 384);
             this.pnlBoxs.TabIndex = 4;
             // 
             // pnlButtons
@@ -306,14 +306,14 @@
             this.pnlButtons.Controls.Add(this.btnKaydet);
             this.pnlButtons.Controls.Add(this.btnTemizle);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlButtons.Location = new System.Drawing.Point(0, 418);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 405);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(292, 39);
             this.pnlButtons.TabIndex = 7;
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnKaydet.Location = new System.Drawing.Point(152, 5);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(96, 31);
@@ -324,7 +324,7 @@
             // 
             // btnTemizle
             // 
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTemizle.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTemizle.Location = new System.Drawing.Point(50, 5);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(96, 31);
@@ -338,10 +338,11 @@
             this.tabMenu.Controls.Add(this.tabAracEkle);
             this.tabMenu.Controls.Add(this.tabListe);
             this.tabMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMenu.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tabMenu.Location = new System.Drawing.Point(0, 24);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 0;
-            this.tabMenu.Size = new System.Drawing.Size(882, 489);
+            this.tabMenu.Size = new System.Drawing.Size(896, 477);
             this.tabMenu.TabIndex = 1;
             // 
             // tabListe
@@ -367,26 +368,26 @@
             // dgvilan
             // 
             this.dgvilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvilan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvilan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvilan.Location = new System.Drawing.Point(0, 0);
             this.dgvilan.Name = "dgvilan";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvilan.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dgvilan.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
@@ -425,7 +426,7 @@
             this.menuDosya});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(896, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -457,7 +458,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 513);
+            this.ClientSize = new System.Drawing.Size(896, 501);
             this.Controls.Add(this.tabMenu);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";

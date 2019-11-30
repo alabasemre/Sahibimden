@@ -117,7 +117,7 @@ namespace Sahibimden
         {
             if (!(((int)e.KeyChar >= 48 && (int)e.KeyChar <= 57) || (int)e.KeyChar == 8))
             {
-                MessageBox.Show("Veriler Rakamsal Girin...", "Uyarı!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Verileri Rakamsal Girin...", "Uyarı!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Handled = true;
             }       
         }
