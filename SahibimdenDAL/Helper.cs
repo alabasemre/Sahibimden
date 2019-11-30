@@ -3,38 +3,42 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SahibimdenDAL
 {
-    public class Helper:IDisposable
+    public class Helper : IDisposable
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
         SqlCommand cmd = null;
+        SqlTransaction TSQL; 
 
         public int ExecuteNonQuery(string cmdText, SqlParameter[] p)
         {
             int sonuc = 0;
-            
-            cmd = new SqlCommand(cmdText,connection);
 
-            if (p!=null)
+            cmd = new SqlCommand(cmdText, connection);
+
+            if (p != null)
             {
                 cmd.Parameters.AddRange(p);
             }
 
             OpenConnection();
+            BeginTransaction();
+
+            cmd.Transaction = TSQL;
+
             sonuc = cmd.ExecuteNonQuery();
-            //CloseConnection();
 
             return sonuc;
         }
 
         public SqlDataReader ExecuteReader(string cmdtext, SqlParameter[] p)
         {
-            //SqlCommand cmd = new SqlCommand(cmdtext, cn);
             cmd = new SqlCommand(cmdtext, connection);
             if (p != null)
             {
@@ -42,6 +46,7 @@ namespace SahibimdenDAL
             }
 
             OpenConnection();
+      
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
@@ -50,24 +55,10 @@ namespace SahibimdenDAL
             try
             {
                 if (connection != null && connection.State != ConnectionState.Open)
-                {
-                    connection.Open();
+                {                   
+                    connection.Open();               
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        private void CloseConnection()
-        {
-            try
-            {
-                if (connection != null && connection.State != ConnectionState.Closed)
-                {
-                    connection.Close();
-                }
-            }
+            }          
             catch (Exception)
             {
                 throw;
@@ -77,10 +68,32 @@ namespace SahibimdenDAL
         public void Dispose()
         {
             if (connection != null && cmd != null)
-            {
+            {             
                 connection.Dispose();
-                cmd.Dispose();
+                cmd.Dispose();                
             }
+            if (TSQL!=null)
+            {
+                TSQL.Dispose();
+            }
+        }
+
+        public void BeginTransaction()
+        {
+            if (TSQL == null && connection.State==ConnectionState.Open)
+            {
+                TSQL = connection.BeginTransaction();
+            }
+        }
+
+        public void Commit()
+        {
+            TSQL.Commit();
+        }
+
+        public void Rollback()
+        {
+            TSQL.Rollback();
         }
     }
 }

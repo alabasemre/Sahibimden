@@ -1,4 +1,5 @@
-﻿using SahibimdenBLL;
+﻿using Sahibimden.languages.tr;
+using SahibimdenBLL;
 using SahibimdenMODEL;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,8 @@ namespace Sahibimden
         OzellikBL ozellikBL = null;
         ResimBL resimBL = null;
         ListeBL listeBL = null;
+        
         string resimYolu = string.Empty;
-
         public MenuForm()
         {
             InitializeComponent();
@@ -34,10 +35,17 @@ namespace Sahibimden
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GetMarka();
-            FormOlustur();
-            CBoxOlustur();
-            ListeYenile();
+            try
+            {
+                GetMarka();
+                FormOlustur();
+                CBoxOlustur();
+                ListeYenile();
+            }
+            catch (Exception)
+            {
+                // TODO
+            }
         }
         private void GetMarka()
         {
@@ -150,11 +158,21 @@ namespace Sahibimden
             {
                 if (IlanKontrol() && OzellikKontrol() && resimYolu != string.Empty)
                 {
-                    if (MessageBox.Show("Ekleme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(TurkishLang.CONFIRM_MESSAGE, "Onay", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        IlanOlustur();
+                        if (IlanOlustur())
+                        {
+                            ilanBL.Commit();
+                        }
+                        else
+                        {
+                            return;
+                        }
                         SetOzellik();
                         ResimEkle();
+
+                        ozellikBL.Commit();
+                        resimBL.Commit();
                         MessageBox.Show("Ekleme Başarılı");
                         ListeYenile();
                     }
@@ -169,7 +187,24 @@ namespace Sahibimden
                 }
 
             }
-            catch (Exception)
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Veritabanı Hatası İşlem Geri Alındı");
+                if (ilanBL != null)
+                {
+                    MessageBox.Show("Test");
+                    ilanBL.Rollback();
+                }
+                if (ozellikBL != null)
+                {
+                    ozellikBL.Rollback();
+                }
+                if (resimBL != null)
+                {
+                    resimBL.Rollback();
+                }
+            }
+            catch (FormatException ex)
             {
                 MessageBox.Show("Verileri Rakamsal Girin....");
             }
@@ -182,6 +217,10 @@ namespace Sahibimden
                 if (ozellikBL != null)
                 {
                     ozellikBL.Dispose();
+                }
+                if (resimBL != null)
+                {
+                    resimBL.Dispose();
                 }
             }
         }
@@ -209,12 +248,10 @@ namespace Sahibimden
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
-
-        private void IlanOlustur()
+        private bool IlanOlustur()
         {
             try
             {
@@ -224,14 +261,13 @@ namespace Sahibimden
                 iln.Aciklama = richBoxAciklama.Text;
                 iln.ArabaId = (int)cmbModel.SelectedValue;
 
-                ilanBL.IlanEkle(iln);
+                return ilanBL.IlanEkle(iln);
+
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
         private bool IlanKontrol()
@@ -289,22 +325,23 @@ namespace Sahibimden
 
         private void ResimEkle()
         {
-            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            byte[] resim = br.ReadBytes((int)fs.Length);
-            br.Close();
-            br.Dispose();
-            fs.Close();
-            fs.Dispose();
+            try
+            {
+                FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                byte[] resim = br.ReadBytes((int)fs.Length);
+                br.Close();
+                br.Dispose();
+                fs.Close();
+                fs.Dispose();
 
-            resimBL = new ResimBL();
-            resimBL.ResimEkle(resim);
-            resimBL.Dispose();
-        }
-
-        private void dgvilan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                resimBL = new ResimBL();
+                resimBL.ResimEkle(resim);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         void CBoxOlustur()
@@ -356,10 +393,9 @@ namespace Sahibimden
                 //col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;         
                 ((DataGridViewImageColumn)dgvilan.Columns[1]).ImageLayout = DataGridViewImageCellLayout.Stretch;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
             finally
             {

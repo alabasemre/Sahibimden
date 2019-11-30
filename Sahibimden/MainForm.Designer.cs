@@ -50,11 +50,11 @@
             this.pnlBoxs = new System.Windows.Forms.Panel();
             this.tabMenu = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dialogResim = new System.Windows.Forms.OpenFileDialog();
-            this.pnlCBoxs = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvilan = new System.Windows.Forms.DataGridView();
+            this.pnlCBoxs = new System.Windows.Forms.Panel();
             this.gbxChecks = new System.Windows.Forms.GroupBox();
+            this.dialogResim = new System.Windows.Forms.OpenFileDialog();
             this.tabAracEkle.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
             this.pnlAciklama.SuspendLayout();
@@ -63,9 +63,9 @@
             this.gbxBilgi.SuspendLayout();
             this.tabMenu.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.pnlCBoxs.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).BeginInit();
+            this.pnlCBoxs.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAracEkle
@@ -287,19 +287,6 @@
             this.tabPage1.Text = "İlan Listesi";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dialogResim
-            // 
-            this.dialogResim.FileName = "openFileDialog1";
-            // 
-            // pnlCBoxs
-            // 
-            this.pnlCBoxs.Controls.Add(this.gbxChecks);
-            this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
-            this.pnlCBoxs.Name = "pnlCBoxs";
-            this.pnlCBoxs.Size = new System.Drawing.Size(166, 464);
-            this.pnlCBoxs.TabIndex = 3;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvilan);
@@ -340,6 +327,15 @@
             this.dgvilan.Size = new System.Drawing.Size(750, 464);
             this.dgvilan.TabIndex = 1;
             // 
+            // pnlCBoxs
+            // 
+            this.pnlCBoxs.Controls.Add(this.gbxChecks);
+            this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
+            this.pnlCBoxs.Name = "pnlCBoxs";
+            this.pnlCBoxs.Size = new System.Drawing.Size(166, 464);
+            this.pnlCBoxs.TabIndex = 3;
+            // 
             // gbxChecks
             // 
             this.gbxChecks.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -351,6 +347,10 @@
             this.gbxChecks.TabStop = false;
             this.gbxChecks.Text = "Görüntülenen Özellikler";
             // 
+            // dialogResim
+            // 
+            this.dialogResim.FileName = "openFileDialog1";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +358,7 @@
             this.ClientSize = new System.Drawing.Size(924, 490);
             this.Controls.Add(this.tabMenu);
             this.Name = "MenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabAracEkle.ResumeLayout(false);
@@ -369,9 +370,9 @@
             this.gbxBilgi.ResumeLayout(false);
             this.tabMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.pnlCBoxs.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).EndInit();
+            this.pnlCBoxs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

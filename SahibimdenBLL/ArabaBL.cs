@@ -3,6 +3,7 @@ using SahibimdenMODEL;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace SahibimdenBLL
 {
-    public class ArabaBL:IDisposable
-    {        
-        Helper help = new Helper();               
+    public class ArabaBL : IDisposable
+    {
+        Helper help = new Helper();        
 
         public List<Araba> AracListele(int id)
         {
@@ -38,11 +39,21 @@ namespace SahibimdenBLL
 
             marka.Insert(0, new Araba { Ad = "Seçiniz..." });
             return marka;
-        }
+        }  
 
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
+        }
+
+        public void Commit()
+        {
+            help.Commit();
+        }
+
+        public void Rollback()
+        {
+            help.Rollback();
         }
     }
 }

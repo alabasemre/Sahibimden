@@ -10,8 +10,7 @@ namespace SahibimdenMODEL
     public class ListeModel
     {
         public int IlanId { get; set; }
-        public Image Img { get; set; }
-        
+        public Image Img { get; set; }        
         public string Marka { get; set; }
         public string Model { get; set; }
         public string Seri { get; set; }

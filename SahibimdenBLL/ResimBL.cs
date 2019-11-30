@@ -13,7 +13,7 @@ using System.IO;
 namespace SahibimdenBLL
 {
     public class ResimBL : IDisposable
-    {
+    {       
         Helper help = new Helper();
         public bool ResimEkle(byte[] img)
         {
@@ -47,10 +47,17 @@ namespace SahibimdenBLL
             ms.Dispose();
             return resimler;
         }
-
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
+        }
+        public void Commit()
+        {
+            help.Commit();
+        }
+        public void Rollback()
+        {
+            help.Rollback();
         }
     }
 }

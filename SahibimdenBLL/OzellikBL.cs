@@ -46,10 +46,17 @@ namespace SahibimdenBLL
             dr.Close();
             return ozellikler;
         }
-
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
+        }
+        public void Commit()
+        {
+            help.Commit();
+        }
+        public void Rollback()
+        {
+            help.Rollback();
         }
     }
 }
