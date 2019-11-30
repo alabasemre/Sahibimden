@@ -41,9 +41,9 @@ namespace SahibimdenBLL
                     IlanId = (int)dr["ilan_id"],
                     IlanTarihi = (DateTime)dr["ilan_tarihi"],
                     Aciklama = dr["aciklama"].ToString(),
-                    Marka = dr["Marka"].ToString(),
-                    Model = dr["Model"].ToString(),
+                    Marka = dr["Marka"].ToString(),                   
                     Seri = dr["Seri"].ToString(),
+                    Model = dr["Model"].ToString(),
                     Img = Image.FromStream(ms, true)
                 });
             }

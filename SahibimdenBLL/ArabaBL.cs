@@ -39,7 +39,40 @@ namespace SahibimdenBLL
 
             marka.Insert(0, new Araba { Ad = "Seçiniz..." });
             return marka;
-        }  
+        }
+
+        public bool ArabaEkle(Araba araba)
+        {
+            SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat", araba.UstKategori) };
+            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_araba (ad,ust_kategori) VALUES(@ad,@ustKat)",p);
+        }
+        public bool Guncelle(Araba araba)
+        {
+            SqlParameter[] p = { new SqlParameter("@id",araba.ArabaId),new SqlParameter("@ad", araba.Ad), new SqlParameter("@ustKat", araba.UstKategori) };
+            return 0 < help.ExecuteNonQuery("UPDATE tbl_araba SET ad=@ad,ust_kategori=@ustKat WHERE araba_id=@id", p);
+        }
+
+        public bool Sil(int id)
+        {
+            SqlParameter[] p = { new SqlParameter("@id", id) };
+            return 0 < help.ExecuteNonQuery("DELETE FROM tbl_araba WHERE araba_id=@id OR ust_kategori=@id OR " +
+                "ust_kategori IN (SELECT araba_id FROM tbl_araba WHERE ust_kategori=@id)", p);
+        }
+
+        public bool KayitVarmi(Araba araba)
+        {
+            int adet = 0;
+            SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat",araba.UstKategori) };
+
+            SqlDataReader dr = help.ExecuteReader("SELECT COUNT(*) as Adet FROM tbl_araba WHERE ad=@ad AND ust_kategori=@ustKat",p);
+
+            if (dr.Read())
+            {
+               adet = (int)dr["Adet"];     
+            }
+            dr.Close();
+            return adet==1;
+        }
 
         public void Dispose()
         {

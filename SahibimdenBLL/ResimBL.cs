@@ -19,7 +19,7 @@ namespace SahibimdenBLL
         {
             SqlParameter[] p = { new SqlParameter("@resim", img) };
 
-            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_resim (ilan_id,resim) VALUES((SELECT MAX(ilan_id) FROM tbl_ilan),@resim)", p);
+            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_resim (ilan_id,resim) VALUES((SELECT MAX(ilan_id) FROM tbl_ilan),@resim)", p,true);
         }
 
         public List<Resim> ResimListele()

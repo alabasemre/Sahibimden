@@ -18,8 +18,7 @@ namespace SahibimdenBLL
 
             SqlParameter[] p = { new SqlParameter("@ust_kat", id) };
 
-            SqlDataReader dr = help.ExecuteReader("SELECT kategori_id,ad,ust_kategori FROM tbl_kategori WHERE ust_kategori=@ust_kat", p);
-            //SqlDataReader dr = help.ExecuteReader("SELECT kategori_id,ad,ust_kategori FROM tbl_kategori", null);
+            SqlDataReader dr = help.ExecuteReader("SELECT kategori_id,ad,ust_kategori FROM tbl_kategori WHERE ust_kategori=@ust_kat", p);           
 
             while (dr.Read())
             {

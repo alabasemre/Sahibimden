@@ -18,7 +18,7 @@ namespace SahibimdenBLL
 
             SqlParameter[] p = { new SqlParameter("@kategori", ozellik.kategori_id), new SqlParameter("@deger", ozellik.deger) };
 
-            sonuc = help.ExecuteNonQuery("INSERT INTO tbl_deger(ilan_id,kategori_id,deger)VALUES((SELECT MAX(ilan_id) FROM tbl_ilan),@kategori,@deger)", p);
+            sonuc = help.ExecuteNonQuery("INSERT INTO tbl_deger(ilan_id,kategori_id,deger)VALUES((SELECT MAX(ilan_id) FROM tbl_ilan),@kategori,@deger)", p,true);
 
             return sonuc == 1;
         }

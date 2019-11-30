@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Sahibimden
 {
-    public partial class MenuForm : Form
+    public partial class MainForm : Form
     {
         List<Kategori> kategoriler = null;
         KategoriBL kategori = null;
@@ -26,14 +26,14 @@ namespace Sahibimden
         OzellikBL ozellikBL = null;
         ResimBL resimBL = null;
         ListeBL listeBL = null;
-        
+
         string resimYolu = string.Empty;
-        public MenuForm()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Sahibimden
                 // TODO
             }
         }
-        private void GetMarka()
+        public void GetMarka()
         {
             araba = new ArabaBL();
 
@@ -109,7 +109,17 @@ namespace Sahibimden
         {
             TextBox txtBox = new TextBox();
             txtBox.Location = new Point(10, i * 25 + 10);
+            txtBox.KeyPress += TxtBox_KeyPress;
             pnlBoxs.Controls.Add(txtBox);
+        }
+
+        private void TxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(((int)e.KeyChar >= 48 && (int)e.KeyChar <= 57) || (int)e.KeyChar == 8))
+            {
+                MessageBox.Show("Veriler Rakamsal Girin...", "Uyarı!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Handled = true;
+            }       
         }
 
         private void CmbOlustur(int i)
@@ -175,6 +185,7 @@ namespace Sahibimden
                         resimBL.Commit();
                         MessageBox.Show("Ekleme Başarılı");
                         ListeYenile();
+                        Temizle();
                     }
                     else
                     {
@@ -236,7 +247,7 @@ namespace Sahibimden
                     ozellik.kategori_id = kategoriler[i].KategoriId;
                     if (pnlBoxs.Controls[i] is TextBox)
                     {
-                        ozellik.deger = pnlBoxs.Controls[i].Text;
+                        ozellik.deger = pnlBoxs.Controls[i].Text.Trim();
                     }
                     else
                     {
@@ -379,7 +390,7 @@ namespace Sahibimden
             }
         }
 
-        void ListeYenile()
+        public void ListeYenile()
         {
             try
             {
@@ -401,6 +412,31 @@ namespace Sahibimden
             {
                 listeBL.Dispose();
             }
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            Temizle();
+        }
+
+        void Temizle()
+        {
+            cmbMarka.SelectedIndex = 0;
+            picBoxAraba.Image = null;
+
+            for (int i = 0; i < pnlBoxs.Controls.Count; i++)
+            {
+                if (pnlBoxs.Controls[i] is TextBox)
+                {
+                    pnlBoxs.Controls[i].Text = "";
+                }
+            }
+        }
+
+        private void menuMSMislem_Click(object sender, EventArgs e)
+        {
+            MSMForm msmForm = new MSMForm();
+            msmForm.ShowDialog();
         }
     }
 }

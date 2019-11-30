@@ -16,7 +16,7 @@ namespace SahibimdenDAL
         SqlCommand cmd = null;
         SqlTransaction TSQL; 
 
-        public int ExecuteNonQuery(string cmdText, SqlParameter[] p)
+        public int ExecuteNonQuery(string cmdText, SqlParameter[] p,bool tStart=false)
         {
             int sonuc = 0;
 
@@ -28,7 +28,10 @@ namespace SahibimdenDAL
             }
 
             OpenConnection();
-            BeginTransaction();
+            if (tStart)
+            {
+                BeginTransaction();
+            }
 
             cmd.Transaction = TSQL;
 

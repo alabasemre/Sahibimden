@@ -1,6 +1,6 @@
 ﻿namespace Sahibimden
 {
-    partial class MenuForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -46,11 +46,13 @@
             this.lblModel = new System.Windows.Forms.Label();
             this.lblMarka = new System.Windows.Forms.Label();
             this.pnlAracBilgisi = new System.Windows.Forms.Panel();
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
+            this.pnlBilgiUst = new System.Windows.Forms.Panel();
             this.gbxBilgi = new System.Windows.Forms.GroupBox();
             this.pnlLabel = new System.Windows.Forms.Panel();
             this.pnlBoxs = new System.Windows.Forms.Panel();
+            this.pnlButtons = new System.Windows.Forms.Panel();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnTemizle = new System.Windows.Forms.Button();
             this.tabMenu = new System.Windows.Forms.TabControl();
             this.tabListe = new System.Windows.Forms.TabPage();
             this.pnlAracListesi = new System.Windows.Forms.Panel();
@@ -58,8 +60,10 @@
             this.pnlCBoxs = new System.Windows.Forms.Panel();
             this.gbxChecks = new System.Windows.Forms.GroupBox();
             this.dialogResim = new System.Windows.Forms.OpenFileDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlBilgiUst = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuDosya = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMSMislem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOzellikIslem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabAracEkle.SuspendLayout();
             this.pnlAciklamaHolder.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
@@ -68,14 +72,15 @@
             this.grpAraba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAraba)).BeginInit();
             this.pnlAracBilgisi.SuspendLayout();
+            this.pnlBilgiUst.SuspendLayout();
             this.gbxBilgi.SuspendLayout();
+            this.pnlButtons.SuspendLayout();
             this.tabMenu.SuspendLayout();
             this.tabListe.SuspendLayout();
             this.pnlAracListesi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).BeginInit();
             this.pnlCBoxs.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.pnlBilgiUst.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAracEkle
@@ -246,33 +251,22 @@
             // 
             this.pnlAracBilgisi.BackColor = System.Drawing.Color.DarkGray;
             this.pnlAracBilgisi.Controls.Add(this.pnlBilgiUst);
-            this.pnlAracBilgisi.Controls.Add(this.panel1);
+            this.pnlAracBilgisi.Controls.Add(this.pnlButtons);
             this.pnlAracBilgisi.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlAracBilgisi.Location = new System.Drawing.Point(579, 3);
             this.pnlAracBilgisi.Name = "pnlAracBilgisi";
             this.pnlAracBilgisi.Size = new System.Drawing.Size(292, 457);
             this.pnlAracBilgisi.TabIndex = 8;
             // 
-            // btnTemizle
+            // pnlBilgiUst
             // 
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTemizle.Location = new System.Drawing.Point(50, 5);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(96, 31);
-            this.btnTemizle.TabIndex = 2;
-            this.btnTemizle.Text = "Temizle";
-            this.btnTemizle.UseVisualStyleBackColor = true;
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(152, 5);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(96, 31);
-            this.btnKaydet.TabIndex = 1;
-            this.btnKaydet.Text = "İlan Ekle";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            this.pnlBilgiUst.BackColor = System.Drawing.Color.DimGray;
+            this.pnlBilgiUst.Controls.Add(this.gbxBilgi);
+            this.pnlBilgiUst.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBilgiUst.Location = new System.Drawing.Point(0, 0);
+            this.pnlBilgiUst.Name = "pnlBilgiUst";
+            this.pnlBilgiUst.Size = new System.Drawing.Size(292, 418);
+            this.pnlBilgiUst.TabIndex = 8;
             // 
             // gbxBilgi
             // 
@@ -307,12 +301,44 @@
             this.pnlBoxs.Size = new System.Drawing.Size(161, 396);
             this.pnlBoxs.TabIndex = 4;
             // 
+            // pnlButtons
+            // 
+            this.pnlButtons.Controls.Add(this.btnKaydet);
+            this.pnlButtons.Controls.Add(this.btnTemizle);
+            this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlButtons.Location = new System.Drawing.Point(0, 418);
+            this.pnlButtons.Name = "pnlButtons";
+            this.pnlButtons.Size = new System.Drawing.Size(292, 39);
+            this.pnlButtons.TabIndex = 7;
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Location = new System.Drawing.Point(152, 5);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(96, 31);
+            this.btnKaydet.TabIndex = 1;
+            this.btnKaydet.Text = "İlan Ekle";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTemizle.Location = new System.Drawing.Point(50, 5);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(96, 31);
+            this.btnTemizle.TabIndex = 2;
+            this.btnTemizle.Text = "Temizle";
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
+            // 
             // tabMenu
             // 
             this.tabMenu.Controls.Add(this.tabAracEkle);
             this.tabMenu.Controls.Add(this.tabListe);
             this.tabMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMenu.Location = new System.Drawing.Point(0, 0);
+            this.tabMenu.Location = new System.Drawing.Point(0, 24);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 0;
             this.tabMenu.Size = new System.Drawing.Size(882, 489);
@@ -393,36 +419,51 @@
             // 
             this.dialogResim.FileName = "openFileDialog1";
             // 
-            // panel1
+            // menuStrip1
             // 
-            this.panel1.Controls.Add(this.btnKaydet);
-            this.panel1.Controls.Add(this.btnTemizle);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 418);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 39);
-            this.panel1.TabIndex = 7;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDosya});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // pnlBilgiUst
+            // menuDosya
             // 
-            this.pnlBilgiUst.BackColor = System.Drawing.Color.DimGray;
-            this.pnlBilgiUst.Controls.Add(this.gbxBilgi);
-            this.pnlBilgiUst.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBilgiUst.Location = new System.Drawing.Point(0, 0);
-            this.pnlBilgiUst.Name = "pnlBilgiUst";
-            this.pnlBilgiUst.Size = new System.Drawing.Size(292, 418);
-            this.pnlBilgiUst.TabIndex = 8;
+            this.menuDosya.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menuDosya.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMSMislem,
+            this.menuOzellikIslem});
+            this.menuDosya.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.menuDosya.Name = "menuDosya";
+            this.menuDosya.Size = new System.Drawing.Size(52, 20);
+            this.menuDosya.Text = "Dosya";
             // 
-            // MenuForm
+            // menuMSMislem
+            // 
+            this.menuMSMislem.Name = "menuMSMislem";
+            this.menuMSMislem.Size = new System.Drawing.Size(219, 22);
+            this.menuMSMislem.Text = "Marka\\Seri\\Model İslemleri";
+            this.menuMSMislem.Click += new System.EventHandler(this.menuMSMislem_Click);
+            // 
+            // menuOzellikIslem
+            // 
+            this.menuOzellikIslem.Name = "menuOzellikIslem";
+            this.menuOzellikIslem.Size = new System.Drawing.Size(219, 22);
+            this.menuOzellikIslem.Text = "Özellik İşlemleri";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 489);
+            this.ClientSize = new System.Drawing.Size(882, 513);
             this.Controls.Add(this.tabMenu);
-            this.Name = "MenuForm";
+            this.Controls.Add(this.menuStrip1);
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabAracEkle.ResumeLayout(false);
             this.pnlAciklamaHolder.ResumeLayout(false);
             this.gbxAciklama.ResumeLayout(false);
@@ -432,15 +473,18 @@
             this.grpAraba.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAraba)).EndInit();
             this.pnlAracBilgisi.ResumeLayout(false);
+            this.pnlBilgiUst.ResumeLayout(false);
             this.gbxBilgi.ResumeLayout(false);
+            this.pnlButtons.ResumeLayout(false);
             this.tabMenu.ResumeLayout(false);
             this.tabListe.ResumeLayout(false);
             this.pnlAracListesi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).EndInit();
             this.pnlCBoxs.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.pnlBilgiUst.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -475,7 +519,11 @@
         private System.Windows.Forms.Panel pnlLabel;
         private System.Windows.Forms.Panel pnlBoxs;
         private System.Windows.Forms.Panel pnlBilgiUst;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuDosya;
+        private System.Windows.Forms.ToolStripMenuItem menuMSMislem;
+        private System.Windows.Forms.ToolStripMenuItem menuOzellikIslem;
     }
 }
 

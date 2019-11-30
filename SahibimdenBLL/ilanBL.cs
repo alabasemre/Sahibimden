@@ -16,7 +16,7 @@ namespace SahibimdenBLL
         {
             SqlParameter[] p = { new SqlParameter("@aciklama", ilan.Aciklama), new SqlParameter("@id", ilan.ArabaId) };
 
-            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_ilan (aciklama,araba_id) VALUES(@aciklama,@id)", p);
+            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_ilan (aciklama,araba_id) VALUES(@aciklama,@id)", p,true);
         }      
      
         public void Dispose()
