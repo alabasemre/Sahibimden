@@ -93,6 +93,30 @@ namespace SahibimdenBLL
             return marka;
         }
 
+        public List<Araba> MarkaAra(string ad)
+        {
+            List<Araba> marka = new List<Araba>();
+
+            SqlParameter[] p = { new SqlParameter("@ad", ad) };
+
+            SqlDataReader dr = help.ExecuteReader("SELECT araba_id,ad,ust_kategori FROM tbl_araba WHERE ad=@ad", p);
+
+            while (dr.Read())
+            {               
+                marka.Add
+                (
+                    new Araba
+                    {
+                        Ad = dr["Ad"].ToString(),
+                        ArabaId = (int)dr["araba_id"],
+                        UstKategori = (int)dr["ust_kategori"]
+                    }
+                );
+            }
+            
+            dr.Close();
+            return marka;
+        }
 
         public bool ArabaEkle(Araba araba)
         {

@@ -47,11 +47,7 @@ namespace Sahibimden
                 cmbMarka.ValueMember = "ArabaId";
                 cmbMarka.DataSource = arabaBL.AracListele(0);
 
-                cmbMarkaAra.DisplayMember = "Ad";
-                cmbMarkaAra.ValueMember = "ArabaId";
-                cmbMarkaAra.DataSource = arabaBL.AracListele(0);
-
-                GetSeri();
+                GetSeri();               
             }
             catch (Exception)
             {
@@ -61,7 +57,7 @@ namespace Sahibimden
             {
                 arabaBL.Dispose();
             }
-        }
+        }     
 
         void GetSeri()
         {
@@ -166,6 +162,7 @@ namespace Sahibimden
             btnMarkaEkle.Text = "Marka Ekle";
             dgvMarkaList.ClearSelection();
             btnMarkaSil.Visible = false;
+            GetMarka();
         }
 
         private void btnMarkaVazgec_Click(object sender, EventArgs e)
@@ -239,7 +236,7 @@ namespace Sahibimden
             catch (Exception)
             {
                 throw;
-            }         
+            }
         }
 
         private void dgvSeriList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -358,7 +355,7 @@ namespace Sahibimden
         private void dgvModelListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {
+            {             
                 modelId = (int)dgvModelListe.CurrentRow.Cells["ArabaId"].Value;
                 txtModel.Text = dgvModelListe.CurrentRow.Cells["Ad"].Value.ToString();
                 cmbSeri.SelectedValue = (int)dgvModelListe.CurrentRow.Cells["UstKategori"].Value;
@@ -368,6 +365,10 @@ namespace Sahibimden
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                arabaBL.Dispose();
             }
         }
 
@@ -462,5 +463,94 @@ namespace Sahibimden
                 arabaBL.Dispose();
             }
         }
+
+        private void btnMarkaAra_Click(object sender, EventArgs e)
+        {
+            if (txtMarkaAra.Text.Trim() == "")
+            {
+                MessageBox.Show("Aranacak Markayı Girin", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                arabaBL = new ArabaBL();
+                if (arabaBL.MarkaAra(txtMarkaAra.Text.Trim()).Count == 0)
+                {
+                    MessageBox.Show("Marka Bulunamadı", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                markaId = 0;
+                txtMarka.Text = "";
+                btnMarkaEkle.Text = "Marka Ekle";
+                btnMarkaSil.Visible = false;
+
+                dgvMarkaList.DataSource = arabaBL.MarkaAra(txtMarkaAra.Text.Trim());
+                dgvMarkaList.ClearSelection();
+
+                txtMarkaAra.Text = "";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                arabaBL.Dispose();
+            }
+
+        }
+
+        private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSeri.Text.Trim()!="")
+                {
+                    return;
+                }
+                List<Araba> seriList;
+                arabaBL = new ArabaBL();
+                if (cmbMarka.SelectedIndex == 0)
+                {
+                    seriList = arabaBL.SeriListele();
+                    seriList.RemoveAt(0);
+
+                    dgvSeriList.DataSource = seriList;
+                    dgvSeriList.Columns[2].Visible = false;
+
+                    return;
+                }
+
+                seriList = arabaBL.AracListele((int)cmbMarka.SelectedValue);
+                seriList.RemoveAt(0);
+                if (seriList.Count == 0)
+                {
+                    MessageBox.Show("Bu Markaya Ait Seri Bulunamadı", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                dgvSeriList.DataSource = seriList;
+                dgvSeriList.Columns[2].Visible = false;
+                SeriAraTemizle();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                arabaBL.Dispose();
+            }
+        }
+
+        void SeriAraTemizle()
+        {
+            btnSeriSil.Visible = false;
+            btnSeriEkle.Text = "Seri Ekle";
+            txtSeri.Text = "";
+            dgvSeriList.ClearSelection();
+            seriId = 0;
+        }
+      
     }
 }
