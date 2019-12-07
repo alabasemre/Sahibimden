@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 namespace SahibimdenBLL
 {
     public class ListeBL:IDisposable
-    {             
-        Helper help = new Helper();
+    {
+        //Helper help = new Helper();
+        Helper help = Helper.getInstance();
         public List<ListeModel> Listele()
         {
             List<ListeModel> liste = new List<ListeModel>();
@@ -53,7 +54,11 @@ namespace SahibimdenBLL
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
-        }   
+        }
+        public void DisposeCmd()
+        {
+            help.DisposeCmd();
+        }
     }
    
 }

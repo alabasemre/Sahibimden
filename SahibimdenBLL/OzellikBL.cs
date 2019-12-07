@@ -11,7 +11,8 @@ namespace SahibimdenBLL
 {
     public class OzellikBL : IDisposable
     {
-        Helper help = new Helper();
+        //Helper help = new Helper();  
+        Helper help = Helper.getInstance();
         public bool ArabaOzellikEkle(Ozellik ozellik)
         {
             int sonuc = 0;
@@ -50,13 +51,9 @@ namespace SahibimdenBLL
         {
             ((IDisposable)help).Dispose();
         }
-        public void Commit()
+        public void DisposeCmd()
         {
-            help.Commit();
-        }
-        public void Rollback()
-        {
-            help.Rollback();
-        }
+            help.DisposeCmd();
+        }   
     }
 }

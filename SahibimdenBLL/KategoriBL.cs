@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 namespace SahibimdenBLL
 {
     public class KategoriBL:IDisposable
-    {       
-        Helper help = new Helper();
+    {
+        //Helper help = new Helper();
+        Helper help = Helper.getInstance();
         public List<Kategori> KategoriListele(int id)
         {
             List<Kategori> kategoriList = new List<Kategori>();
@@ -40,14 +41,7 @@ namespace SahibimdenBLL
         public void Dispose()
         {
             help.Dispose();
-        }
-        public void Commit()
-        {
-            help.Commit();
-        }
-        public void Rollback()
-        {
-            help.Rollback();
-        }
+        }       
+    
     }
 }

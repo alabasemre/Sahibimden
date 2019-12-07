@@ -11,7 +11,8 @@ namespace SahibimdenBLL
 {
     public class IlanBL : IDisposable
     {
-        Helper help = new Helper();
+        //Helper help = new Helper();
+        Helper help = Helper.getInstance();
         public bool IlanEkle(Ilan ilan)
         {
             SqlParameter[] p = { new SqlParameter("@aciklama", ilan.Aciklama), new SqlParameter("@id", ilan.ArabaId) };
@@ -23,6 +24,11 @@ namespace SahibimdenBLL
         {
             help.Dispose();
         }
+        public void DisposeCmd()
+        {
+            help.DisposeCmd();
+        }
+
         public void Commit()
         {
             help.Commit();
@@ -30,7 +36,7 @@ namespace SahibimdenBLL
 
         public void Rollback()
         {
-            help.ExecuteNonQuery("DELETE FROM tbl_ilan WHERE ilan_id=(SELECT MAX(ilan_id) FROM tbl_ilan)", null);
+            help.Rollback();          
         }
     }
 }

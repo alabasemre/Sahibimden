@@ -101,7 +101,7 @@ namespace Sahibimden
                 }
                 label.Location = new Point(10, i * 25 + 10);
                 pnlLabel.Controls.Add(label);
-            }
+            }           
             kategori.Dispose();
         }
 
@@ -119,7 +119,7 @@ namespace Sahibimden
             {
                 MessageBox.Show("Verileri Rakamsal Girin...", "Uyarı!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Handled = true;
-            }       
+            }
         }
 
         private void CmbOlustur(int i)
@@ -172,17 +172,15 @@ namespace Sahibimden
                     {
                         if (IlanOlustur())
                         {
-                            ilanBL.Commit();
+                            SetOzellik();
+                            ResimEkle();
                         }
                         else
                         {
                             return;
                         }
-                        SetOzellik();
-                        ResimEkle();
-
-                        ozellikBL.Commit();
-                        resimBL.Commit();
+                      
+                        ilanBL.Commit();
                         MessageBox.Show("Ekleme Başarılı");
                         ListeYenile();
                         Temizle();
@@ -205,15 +203,7 @@ namespace Sahibimden
                 {
                     MessageBox.Show("Test");
                     ilanBL.Rollback();
-                }
-                if (ozellikBL != null)
-                {
-                    ozellikBL.Rollback();
-                }
-                if (resimBL != null)
-                {
-                    resimBL.Rollback();
-                }
+                }              
             }
             catch (FormatException ex)
             {
@@ -224,15 +214,7 @@ namespace Sahibimden
                 if (ilanBL != null)
                 {
                     ilanBL.Dispose();
-                }
-                if (ozellikBL != null)
-                {
-                    ozellikBL.Dispose();
-                }
-                if (resimBL != null)
-                {
-                    resimBL.Dispose();
-                }
+                }              
             }
         }
 
@@ -261,6 +243,11 @@ namespace Sahibimden
             {
                 throw;
             }
+            finally
+            {
+                ozellikBL.DisposeCmd();
+            }
+
         }
         private bool IlanOlustur()
         {
@@ -278,6 +265,10 @@ namespace Sahibimden
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                ilanBL.DisposeCmd();
             }
         }
 
@@ -353,6 +344,10 @@ namespace Sahibimden
             {
                 throw;
             }
+            finally
+            {
+                resimBL.DisposeCmd();
+            }
         }
 
         void CBoxOlustur()
@@ -369,24 +364,34 @@ namespace Sahibimden
 
         private void Cbox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox cbox = (CheckBox)sender;
-            if (cbox.Checked)
+            try
             {
-                ozellikBL = new OzellikBL();
-
-                dgvilan.Columns.Add(cbox.Text, cbox.Text);
-
-                List<Ozellik> liste = ozellikBL.OzellikGetir(cbox.Text);
-
-                for (int i = 0; i < liste.Count; i++)
+                CheckBox cbox = (CheckBox)sender;
+                if (cbox.Checked)
                 {
-                    dgvilan.Rows[i].Cells[cbox.Text].Value = liste[i].deger;
+                    ozellikBL = new OzellikBL();
+
+                    dgvilan.Columns.Add(cbox.Text, cbox.Text);
+
+                    List<Ozellik> liste = ozellikBL.OzellikGetir(cbox.Text);
+
+                    for (int i = 0; i < liste.Count; i++)
+                    {
+                        dgvilan.Rows[i].Cells[cbox.Text].Value = liste[i].deger;
+                    }
                 }
-                ozellikBL.Dispose();
+                else
+                {
+                    dgvilan.Columns.Remove(cbox.Text);
+                }
             }
-            else
+            catch (Exception)
             {
-                dgvilan.Columns.Remove(cbox.Text);
+                throw;
+            }
+            finally
+            {
+                ozellikBL.Dispose();
             }
         }
 

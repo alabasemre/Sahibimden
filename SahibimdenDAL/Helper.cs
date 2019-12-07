@@ -14,9 +14,24 @@ namespace SahibimdenDAL
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
         SqlCommand cmd = null;
-        SqlTransaction TSQL; 
+        SqlTransaction TSQL;
 
-        public int ExecuteNonQuery(string cmdText, SqlParameter[] p,bool tStart=false)
+        private static Helper helper = null;
+
+        public static Helper getInstance()
+        {
+            if (helper == null)
+            {
+                helper = new Helper();
+            }
+            if (helper.connection == null)
+            {
+                helper.connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
+            }
+            return helper;
+        }
+
+        public int ExecuteNonQuery(string cmdText, SqlParameter[] p, bool tStart = false)
         {
             int sonuc = 0;
 
@@ -49,7 +64,7 @@ namespace SahibimdenDAL
             }
 
             OpenConnection();
-      
+
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
@@ -58,10 +73,10 @@ namespace SahibimdenDAL
             try
             {
                 if (connection != null && connection.State != ConnectionState.Open)
-                {                   
-                    connection.Open();               
+                {
+                    connection.Open();
                 }
-            }          
+            }
             catch (Exception)
             {
                 throw;
@@ -70,20 +85,35 @@ namespace SahibimdenDAL
 
         public void Dispose()
         {
-            if (connection != null && cmd != null)
-            {             
+            if (connection != null)
+            {
                 connection.Dispose();
-                cmd.Dispose();                
+                connection = null;
             }
-            if (TSQL!=null)
+            if (cmd != null)
+            {
+                cmd.Dispose();
+                cmd = null;
+            }
+            if (TSQL != null)
             {
                 TSQL.Dispose();
+                TSQL = null;
+            }
+        }
+
+        public void DisposeCmd()
+        {
+            if (cmd != null)
+            {
+                cmd.Dispose();
+                cmd = null;
             }
         }
 
         public void BeginTransaction()
         {
-            if (TSQL == null && connection.State==ConnectionState.Open)
+            if (TSQL == null && connection.State == ConnectionState.Open)
             {
                 TSQL = connection.BeginTransaction();
             }

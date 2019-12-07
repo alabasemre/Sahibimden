@@ -13,8 +13,8 @@ namespace SahibimdenBLL
 {
     public class ArabaBL : IDisposable
     {
-        Helper help = new Helper();        
-
+        //Helper help = new Helper(); 
+        Helper help = Helper.getInstance();
         public List<Araba> AracListele(int id)
         {
             List<Araba> marka = new List<Araba>();
@@ -155,6 +155,7 @@ namespace SahibimdenBLL
         {
             ((IDisposable)help).Dispose();
         }
+   
 
         public void Commit()
         {
