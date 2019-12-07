@@ -64,34 +64,7 @@ namespace SahibimdenBLL
             marka.Insert(0, new Araba { Ad = "Seçiniz..." });
             dr.Close();          
             return marka;
-        }
-
-        public List<Araba> ModelListele(int ustKat = 0)
-        {
-            List<Araba> marka = new List<Araba>();
-
-            SqlParameter[] p = { new SqlParameter("@ustKat", ustKat) };
-
-            SqlDataReader dr = help.ExecuteReader("SELECT araba_id,ad,ust_kategori FROM tbl_araba " +
-                "WHERE ust_kategori IN (SELECT araba_id FROM tbl_araba WHERE ust_kategori " +
-                "IN(SELECT araba_id FROM tbl_araba WHERE ust_kategori=@ustKat))", p);
-
-            while (dr.Read())
-            {
-                marka.Add
-                (
-                    new Araba
-                    {
-                        Ad = dr["Ad"].ToString(),
-                        ArabaId = (int)dr["araba_id"],
-                        UstKategori = (int)dr["ust_kategori"]
-                    }
-                );
-            }
-            marka.Insert(0, new Araba { Ad = "Seçiniz..." });
-            dr.Close();
-            return marka;
-        }
+        }      
 
         public List<Araba> MarkaAra(string ad)
         {

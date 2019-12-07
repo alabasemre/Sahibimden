@@ -29,6 +29,9 @@
             this.dgvMarkaList = new System.Windows.Forms.DataGridView();
             this.pnlMarkaHolder = new System.Windows.Forms.Panel();
             this.gbxMarkaIslem = new System.Windows.Forms.GroupBox();
+            this.btnMarkaAra = new System.Windows.Forms.Button();
+            this.txtMarkaAra = new System.Windows.Forms.TextBox();
+            this.lblMarkaAra = new System.Windows.Forms.Label();
             this.btnMarkaVazgec = new System.Windows.Forms.Button();
             this.btnMarkaSil = new System.Windows.Forms.Button();
             this.btnMarkaEkle = new System.Windows.Forms.Button();
@@ -52,9 +55,11 @@
             this.pnlModelBG = new System.Windows.Forms.Panel();
             this.pnlModelRight = new System.Windows.Forms.Panel();
             this.gbxModelListe = new System.Windows.Forms.GroupBox();
-            this.dgvModelListe = new System.Windows.Forms.DataGridView();
+            this.dgvModelList = new System.Windows.Forms.DataGridView();
             this.pnlModelLeft = new System.Windows.Forms.Panel();
             this.gbxModelislem = new System.Windows.Forms.GroupBox();
+            this.cmbModMarka = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnModelSil = new System.Windows.Forms.Button();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.cmbSeri = new System.Windows.Forms.ComboBox();
@@ -62,9 +67,6 @@
             this.btnModelTemizle = new System.Windows.Forms.Button();
             this.btnModelEkle = new System.Windows.Forms.Button();
             this.lblMSeri = new System.Windows.Forms.Label();
-            this.lblMarkaAra = new System.Windows.Forms.Label();
-            this.txtMarkaAra = new System.Windows.Forms.TextBox();
-            this.btnMarkaAra = new System.Windows.Forms.Button();
             this.pnlArkaPlan.SuspendLayout();
             this.tabMSM.SuspendLayout();
             this.tabMarka.SuspendLayout();
@@ -84,7 +86,7 @@
             this.pnlModelBG.SuspendLayout();
             this.pnlModelRight.SuspendLayout();
             this.gbxModelListe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModelListe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModelList)).BeginInit();
             this.pnlModelLeft.SuspendLayout();
             this.gbxModelislem.SuspendLayout();
             this.SuspendLayout();
@@ -187,6 +189,33 @@
             this.gbxMarkaIslem.TabIndex = 0;
             this.gbxMarkaIslem.TabStop = false;
             this.gbxMarkaIslem.Text = "Marka İslemleri";
+            // 
+            // btnMarkaAra
+            // 
+            this.btnMarkaAra.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMarkaAra.Location = new System.Drawing.Point(79, 165);
+            this.btnMarkaAra.Name = "btnMarkaAra";
+            this.btnMarkaAra.Size = new System.Drawing.Size(91, 23);
+            this.btnMarkaAra.TabIndex = 11;
+            this.btnMarkaAra.Text = "Marka Ara";
+            this.btnMarkaAra.UseVisualStyleBackColor = true;
+            this.btnMarkaAra.Click += new System.EventHandler(this.btnMarkaAra_Click);
+            // 
+            // txtMarkaAra
+            // 
+            this.txtMarkaAra.Location = new System.Drawing.Point(55, 136);
+            this.txtMarkaAra.Name = "txtMarkaAra";
+            this.txtMarkaAra.Size = new System.Drawing.Size(115, 22);
+            this.txtMarkaAra.TabIndex = 10;
+            // 
+            // lblMarkaAra
+            // 
+            this.lblMarkaAra.AutoSize = true;
+            this.lblMarkaAra.Location = new System.Drawing.Point(9, 143);
+            this.lblMarkaAra.Name = "lblMarkaAra";
+            this.lblMarkaAra.Size = new System.Drawing.Size(28, 14);
+            this.lblMarkaAra.TabIndex = 9;
+            this.lblMarkaAra.Text = "Ara:";
             // 
             // btnMarkaVazgec
             // 
@@ -425,7 +454,7 @@
             // gbxModelListe
             // 
             this.gbxModelListe.BackColor = System.Drawing.Color.Silver;
-            this.gbxModelListe.Controls.Add(this.dgvModelListe);
+            this.gbxModelListe.Controls.Add(this.dgvModelList);
             this.gbxModelListe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbxModelListe.Location = new System.Drawing.Point(0, 0);
             this.gbxModelListe.Name = "gbxModelListe";
@@ -434,16 +463,16 @@
             this.gbxModelListe.TabStop = false;
             this.gbxModelListe.Text = "Model Listesi";
             // 
-            // dgvModelListe
+            // dgvModelList
             // 
-            this.dgvModelListe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvModelListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModelListe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvModelListe.Location = new System.Drawing.Point(3, 18);
-            this.dgvModelListe.Name = "dgvModelListe";
-            this.dgvModelListe.Size = new System.Drawing.Size(314, 180);
-            this.dgvModelListe.TabIndex = 0;
-            this.dgvModelListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModelListe_CellClick);
+            this.dgvModelList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvModelList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvModelList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvModelList.Location = new System.Drawing.Point(3, 18);
+            this.dgvModelList.Name = "dgvModelList";
+            this.dgvModelList.Size = new System.Drawing.Size(314, 180);
+            this.dgvModelList.TabIndex = 0;
+            this.dgvModelList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModelList_CellClick);
             // 
             // pnlModelLeft
             // 
@@ -458,6 +487,8 @@
             // gbxModelislem
             // 
             this.gbxModelislem.BackColor = System.Drawing.Color.Aqua;
+            this.gbxModelislem.Controls.Add(this.cmbModMarka);
+            this.gbxModelislem.Controls.Add(this.label1);
             this.gbxModelislem.Controls.Add(this.btnModelSil);
             this.gbxModelislem.Controls.Add(this.txtModel);
             this.gbxModelislem.Controls.Add(this.cmbSeri);
@@ -473,10 +504,29 @@
             this.gbxModelislem.TabStop = false;
             this.gbxModelislem.Text = "Model İşlemleri";
             // 
+            // cmbModMarka
+            // 
+            this.cmbModMarka.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModMarka.FormattingEnabled = true;
+            this.cmbModMarka.Location = new System.Drawing.Point(51, 25);
+            this.cmbModMarka.Name = "cmbModMarka";
+            this.cmbModMarka.Size = new System.Drawing.Size(124, 22);
+            this.cmbModMarka.TabIndex = 15;
+            this.cmbModMarka.SelectedIndexChanged += new System.EventHandler(this.cmbModMarka_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 14);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Marka";
+            // 
             // btnModelSil
             // 
             this.btnModelSil.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnModelSil.Location = new System.Drawing.Point(51, 148);
+            this.btnModelSil.Location = new System.Drawing.Point(51, 171);
             this.btnModelSil.Name = "btnModelSil";
             this.btnModelSil.Size = new System.Drawing.Size(124, 23);
             this.btnModelSil.TabIndex = 13;
@@ -487,7 +537,7 @@
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(51, 61);
+            this.txtModel.Location = new System.Drawing.Point(51, 84);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(124, 22);
             this.txtModel.TabIndex = 10;
@@ -496,15 +546,16 @@
             // 
             this.cmbSeri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSeri.FormattingEnabled = true;
-            this.cmbSeri.Location = new System.Drawing.Point(51, 30);
+            this.cmbSeri.Location = new System.Drawing.Point(51, 53);
             this.cmbSeri.Name = "cmbSeri";
             this.cmbSeri.Size = new System.Drawing.Size(124, 22);
             this.cmbSeri.TabIndex = 8;
+            this.cmbSeri.SelectedIndexChanged += new System.EventHandler(this.cmbSeri_SelectedIndexChanged);
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(8, 68);
+            this.lblModel.Location = new System.Drawing.Point(8, 91);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(39, 14);
             this.lblModel.TabIndex = 9;
@@ -513,7 +564,7 @@
             // btnModelTemizle
             // 
             this.btnModelTemizle.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnModelTemizle.Location = new System.Drawing.Point(51, 119);
+            this.btnModelTemizle.Location = new System.Drawing.Point(51, 142);
             this.btnModelTemizle.Name = "btnModelTemizle";
             this.btnModelTemizle.Size = new System.Drawing.Size(124, 23);
             this.btnModelTemizle.TabIndex = 12;
@@ -524,7 +575,7 @@
             // btnModelEkle
             // 
             this.btnModelEkle.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnModelEkle.Location = new System.Drawing.Point(51, 89);
+            this.btnModelEkle.Location = new System.Drawing.Point(51, 112);
             this.btnModelEkle.Name = "btnModelEkle";
             this.btnModelEkle.Size = new System.Drawing.Size(124, 23);
             this.btnModelEkle.TabIndex = 11;
@@ -535,38 +586,11 @@
             // lblMSeri
             // 
             this.lblMSeri.AutoSize = true;
-            this.lblMSeri.Location = new System.Drawing.Point(8, 38);
+            this.lblMSeri.Location = new System.Drawing.Point(8, 61);
             this.lblMSeri.Name = "lblMSeri";
             this.lblMSeri.Size = new System.Drawing.Size(27, 14);
             this.lblMSeri.TabIndex = 7;
             this.lblMSeri.Text = "Seri";
-            // 
-            // lblMarkaAra
-            // 
-            this.lblMarkaAra.AutoSize = true;
-            this.lblMarkaAra.Location = new System.Drawing.Point(9, 143);
-            this.lblMarkaAra.Name = "lblMarkaAra";
-            this.lblMarkaAra.Size = new System.Drawing.Size(28, 14);
-            this.lblMarkaAra.TabIndex = 9;
-            this.lblMarkaAra.Text = "Ara:";
-            // 
-            // txtMarkaAra
-            // 
-            this.txtMarkaAra.Location = new System.Drawing.Point(55, 136);
-            this.txtMarkaAra.Name = "txtMarkaAra";
-            this.txtMarkaAra.Size = new System.Drawing.Size(115, 22);
-            this.txtMarkaAra.TabIndex = 10;
-            // 
-            // btnMarkaAra
-            // 
-            this.btnMarkaAra.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMarkaAra.Location = new System.Drawing.Point(79, 165);
-            this.btnMarkaAra.Name = "btnMarkaAra";
-            this.btnMarkaAra.Size = new System.Drawing.Size(91, 23);
-            this.btnMarkaAra.TabIndex = 11;
-            this.btnMarkaAra.Text = "Marka Ara";
-            this.btnMarkaAra.UseVisualStyleBackColor = true;
-            this.btnMarkaAra.Click += new System.EventHandler(this.btnMarkaAra_Click);
             // 
             // MSMForm
             // 
@@ -600,7 +624,7 @@
             this.pnlModelBG.ResumeLayout(false);
             this.pnlModelRight.ResumeLayout(false);
             this.gbxModelListe.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModelListe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModelList)).EndInit();
             this.pnlModelLeft.ResumeLayout(false);
             this.gbxModelislem.ResumeLayout(false);
             this.gbxModelislem.PerformLayout();
@@ -643,7 +667,7 @@
         private System.Windows.Forms.Panel pnlModelLeft;
         private System.Windows.Forms.GroupBox gbxModelislem;
         private System.Windows.Forms.GroupBox gbxModelListe;
-        private System.Windows.Forms.DataGridView dgvModelListe;
+        private System.Windows.Forms.DataGridView dgvModelList;
         private System.Windows.Forms.Button btnModelSil;
         private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.ComboBox cmbSeri;
@@ -654,5 +678,7 @@
         private System.Windows.Forms.Button btnMarkaAra;
         private System.Windows.Forms.TextBox txtMarkaAra;
         private System.Windows.Forms.Label lblMarkaAra;
+        private System.Windows.Forms.ComboBox cmbModMarka;
+        private System.Windows.Forms.Label label1;
     }
 }

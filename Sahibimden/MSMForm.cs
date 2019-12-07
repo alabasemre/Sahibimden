@@ -28,7 +28,7 @@ namespace Sahibimden
         {
             GetMarka();
             GetSeri();
-            GetModel();
+            GetMarkaCMB();
         }
 
         void GetMarka()
@@ -47,7 +47,7 @@ namespace Sahibimden
                 cmbMarka.ValueMember = "ArabaId";
                 cmbMarka.DataSource = arabaBL.AracListele(0);
 
-                GetSeri();               
+                GetSeri();
             }
             catch (Exception)
             {
@@ -57,7 +57,27 @@ namespace Sahibimden
             {
                 arabaBL.Dispose();
             }
-        }     
+        }
+
+        void GetMarkaCMB()
+        {
+            try
+            {
+                arabaBL = new ArabaBL();
+
+                cmbModMarka.DisplayMember = "Ad";
+                cmbModMarka.ValueMember = "ArabaId";
+                cmbModMarka.DataSource = arabaBL.AracListele(0);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                arabaBL.Dispose();
+            }
+        }
 
         void GetSeri()
         {
@@ -71,11 +91,25 @@ namespace Sahibimden
                 dgvSeriList.DataSource = seriList;
                 dgvSeriList.Columns[2].Visible = false;
 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                arabaBL.Dispose();
+            }
+        }
+        void GetSeriCMB()
+        {
+            try
+            {
+                arabaBL = new ArabaBL();
+
                 cmbSeri.DisplayMember = "Ad";
                 cmbSeri.ValueMember = "ArabaId";
-                cmbSeri.DataSource = arabaBL.SeriListele();
-
-                GetModel();
+                cmbSeri.DataSource = arabaBL.AracListele((int)cmbModMarka.SelectedValue);
             }
             catch (Exception)
             {
@@ -90,14 +124,14 @@ namespace Sahibimden
         void GetModel()
         {
             try
-            {
+            {              
                 arabaBL = new ArabaBL();
 
-                List<Araba> modelList = arabaBL.ModelListele();
+                List<Araba> modelList = arabaBL.AracListele((int)cmbSeri.SelectedValue);
                 modelList.RemoveAt(0);
 
-                dgvModelListe.DataSource = modelList;
-                dgvModelListe.Columns[2].Visible = false;
+                dgvModelList.DataSource = modelList;
+                dgvModelList.Columns[2].Visible = false;
             }
             catch (Exception)
             {
@@ -352,13 +386,13 @@ namespace Sahibimden
             }
         }
 
-        private void dgvModelListe_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvModelList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {             
-                modelId = (int)dgvModelListe.CurrentRow.Cells["ArabaId"].Value;
-                txtModel.Text = dgvModelListe.CurrentRow.Cells["Ad"].Value.ToString();
-                cmbSeri.SelectedValue = (int)dgvModelListe.CurrentRow.Cells["UstKategori"].Value;
+            {
+                modelId = (int)dgvModelList.CurrentRow.Cells["ArabaId"].Value;
+                txtModel.Text = dgvModelList.CurrentRow.Cells["Ad"].Value.ToString();
+                cmbSeri.SelectedValue = (int)dgvModelList.CurrentRow.Cells["UstKategori"].Value;
                 btnModelSil.Visible = true;
                 btnModelEkle.Text = "Güncelle";
             }
@@ -377,8 +411,9 @@ namespace Sahibimden
             txtModel.Text = "";
             btnModelSil.Visible = false;
             btnModelEkle.Text = "Model Ekle";
-            cmbSeri.SelectedIndex = 0;
-            dgvModelListe.ClearSelection();
+            cmbSeri.SelectedIndex =0;
+            cmbModMarka.SelectedIndex = 0;
+            dgvModelList.ClearSelection();
             modelId = 0;
         }
 
@@ -404,22 +439,21 @@ namespace Sahibimden
 
                 if (arabaBL.KayitVarmi(araba))
                 {
-                    MessageBox.Show("Aynı Ada Sahip Seri Var", "Aynı Adlı Seri", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Aynı Ada Sahip Model Var", "Aynı Adlı Seri", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     arabaBL.Dispose();
                     return;
                 }
 
                 if (modelId == 0)
                 {
-                    MessageBox.Show(arabaBL.ArabaEkle(araba) ? "Seri Ekleme Başarılı" : "Ekleme Yapılamadı");
+                    MessageBox.Show(arabaBL.ArabaEkle(araba) ? "Model Ekleme Başarılı" : "Ekleme Yapılamadı");
                 }
                 else
                 {
                     araba.ArabaId = modelId;
-                    MessageBox.Show(arabaBL.Guncelle(araba) ? "Seri Güncelleme Başarılı" : "Güncelleme Yapılamadı");
+                    MessageBox.Show(arabaBL.Guncelle(araba) ? "Model Güncelleme Başarılı" : "Güncelleme Yapılamadı");
                 }
                 ModelTemizle();
-                GetModel();
             }
             catch (Exception)
             {
@@ -441,7 +475,6 @@ namespace Sahibimden
                     if (arabaBL.Sil(modelId))
                     {
                         MessageBox.Show("Silme Başarılı", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        GetModel();
                         ModelTemizle();
                     }
                     else
@@ -506,7 +539,7 @@ namespace Sahibimden
         {
             try
             {
-                if (txtSeri.Text.Trim()!="")
+                if (txtSeri.Text.Trim() != "")
                 {
                     return;
                 }
@@ -522,7 +555,6 @@ namespace Sahibimden
 
                     return;
                 }
-
                 seriList = arabaBL.AracListele((int)cmbMarka.SelectedValue);
                 seriList.RemoveAt(0);
                 if (seriList.Count == 0)
@@ -551,6 +583,47 @@ namespace Sahibimden
             dgvSeriList.ClearSelection();
             seriId = 0;
         }
-      
+
+        private void cmbModMarka_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbModMarka.SelectedIndex == 0)
+                {
+                    cmbSeri.Enabled = false;
+                    cmbSeri.SelectedIndex = 0;
+                    return;
+                }
+                cmbSeri.Enabled = true;
+                Debug.WriteLine((int)cmbModMarka.SelectedValue);
+                GetSeriCMB();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void cmbSeri_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbSeri.SelectedIndex == 0)
+                {
+                    dgvModelList.DataSource = null;
+                    return;
+                }
+                GetModel();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
