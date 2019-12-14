@@ -443,5 +443,11 @@ namespace Sahibimden
             MSMForm msmForm = new MSMForm();
             msmForm.ShowDialog();
         }
+
+        private void dgvilan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AracDetay frmAracDetay = new AracDetay((int)dgvilan.CurrentRow.Cells[0].Value);
+            frmAracDetay.ShowDialog();
+        }
     }
 }

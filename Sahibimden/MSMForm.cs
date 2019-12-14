@@ -15,13 +15,14 @@ namespace Sahibimden
 {
     public partial class MSMForm : Form
     {
-        ArabaBL arabaBL = null;
-        int markaId;
+        ArabaBL arabaBL = null;      
         int seriId;
         int modelId;
+        DataTable markaDT;
         public MSMForm()
         {
             InitializeComponent();
+            dgvMarkaList.AutoGenerateColumns = false;
         }
 
         private void MSMForm_Load(object sender, EventArgs e)
@@ -40,8 +41,8 @@ namespace Sahibimden
                 List<Araba> markaList = arabaBL.AracListele(0);
                 markaList.RemoveAt(0);
 
-                dgvMarkaList.DataSource = markaList;
-                dgvMarkaList.Columns[2].Visible = false;
+                markaDT= arabaBL.MarkaListele();
+                dgvMarkaList.DataSource = markaDT;             
 
                 cmbMarka.DisplayMember = "Ad";
                 cmbMarka.ValueMember = "ArabaId";
@@ -101,6 +102,7 @@ namespace Sahibimden
                 arabaBL.Dispose();
             }
         }
+
         void GetSeriCMB()
         {
             try
@@ -141,110 +143,8 @@ namespace Sahibimden
             {
                 arabaBL.Dispose();
             }
-        }
-
-        private void btnMarkaEkle_Click(object sender, EventArgs e)
-        {
-            Araba araba = null;
-            try
-            {
-                if (txtMarka.Text.Trim() == "")
-                {
-                    MessageBox.Show("Marka Adını Giriniz...");
-                    return;
-                }
-                arabaBL = new ArabaBL();
-
-                araba = new Araba();
-                araba.Ad = txtMarka.Text.Trim();
-                araba.UstKategori = 0;
-
-                if (arabaBL.KayitVarmi(araba))
-                {
-                    MessageBox.Show("Aynı Ada Sahip Marka Var", "Aynı Adlı Marka", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    arabaBL.Dispose();
-                    return;
-                }
-
-                if (btnMarkaEkle.Text == "Marka Ekle")
-                {
-                    MessageBox.Show(arabaBL.ArabaEkle(araba) ? "Ekleme Başarılı" : "Ekleme Yapılamadı");
-                }
-                else
-                {
-                    araba.ArabaId = markaId;
-                    MessageBox.Show(arabaBL.Guncelle(araba) ? "Güncelleme Başarılı" : "Güncelleme Yapılamadı");
-                }
-                GetMarka();
-                MarkaTemizle();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                MainFormYenile();
-                arabaBL.Dispose();
-            }
-        }
-
-        void MarkaTemizle()
-        {
-            markaId = 0;
-            txtMarka.Text = "";
-            btnMarkaEkle.Text = "Marka Ekle";
-            dgvMarkaList.ClearSelection();
-            btnMarkaSil.Visible = false;
-            GetMarka();
-        }
-
-        private void btnMarkaVazgec_Click(object sender, EventArgs e)
-        {
-            MarkaTemizle();
-        }
-
-        private void btnMarkaSil_Click(object sender, EventArgs e)
-        {
-            if (markaId == 0)
-            {
-                MessageBox.Show("Silinecek Markayı Seçin...");
-                return;
-            }
-
-            try
-            {
-                if (MessageBox.Show("Silme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    arabaBL = new ArabaBL();
-                    if (arabaBL.Sil(markaId))
-                    {
-                        MessageBox.Show("Silme Başarılı", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        GetMarka();
-                        MarkaTemizle();
-                        MainFormYenile();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Silme Başarısız", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("İşlem İptal Edildi..", "İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                arabaBL.Dispose();
-            }
-        }
-
+        }    
+     
         void MainFormYenile()
         {
             try
@@ -256,22 +156,7 @@ namespace Sahibimden
             {
 
             }
-        }
-
-        private void dgvMarkaList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                markaId = (int)dgvMarkaList.CurrentRow.Cells[0].Value;
-                txtMarka.Text = dgvMarkaList.CurrentRow.Cells[1].Value.ToString();
-                btnMarkaEkle.Text = "Güncelle";
-                btnMarkaSil.Visible = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        }    
 
         private void dgvSeriList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -495,45 +380,7 @@ namespace Sahibimden
             {
                 arabaBL.Dispose();
             }
-        }
-
-        private void btnMarkaAra_Click(object sender, EventArgs e)
-        {
-            if (txtMarkaAra.Text.Trim() == "")
-            {
-                MessageBox.Show("Aranacak Markayı Girin", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            try
-            {
-                arabaBL = new ArabaBL();
-                if (arabaBL.MarkaAra(txtMarkaAra.Text.Trim()).Count == 0)
-                {
-                    MessageBox.Show("Marka Bulunamadı", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                markaId = 0;
-                txtMarka.Text = "";
-                btnMarkaEkle.Text = "Marka Ekle";
-                btnMarkaSil.Visible = false;
-
-                dgvMarkaList.DataSource = arabaBL.MarkaAra(txtMarkaAra.Text.Trim());
-                dgvMarkaList.ClearSelection();
-
-                txtMarkaAra.Text = "";
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                arabaBL.Dispose();
-            }
-
-        }
+        }         
 
         private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -625,5 +472,45 @@ namespace Sahibimden
                 throw;
             }
         }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            foreach (DataRow item in markaDT.Rows)
+            {
+                arabaBL = new ArabaBL();
+                if (item.RowState == DataRowState.Deleted)
+                {
+                    arabaBL.Sil((int)item["araba_id",DataRowVersion.Original]);
+                }
+                else
+                {
+                    Araba araba = new Araba();
+                    araba.Ad = item["ad"].ToString();
+                    araba.UstKategori = 0;
+                    switch (item.RowState)
+                    {                                  
+                        case DataRowState.Added:
+                            arabaBL.ArabaEkle(araba);
+                            break;                       
+                        case DataRowState.Modified:
+                            araba.ArabaId = (int)item["araba_id"];
+                            arabaBL.Guncelle(araba);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            GetMarka();
+            GetMarkaCMB();
+            txtMarkaAra.Text = "";
+        }
+
+        private void txtMarkaAra_TextChanged(object sender, EventArgs e)
+        {
+            //dtSales.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, textBox1.Text);
+            markaDT.DefaultView.RowFilter= string.Format("[{0}] LIKE '%{1}%'", "Ad", txtMarkaAra.Text);
+        }
     }
+    
 }

@@ -12,7 +12,9 @@ namespace SahibimdenBLL
     public class KategoriBL:IDisposable
     {
         //Helper help = new Helper();
-        Helper help = Helper.getInstance();
+        //Helper help = Helper.getInstance();
+        Helper help = Helper.getInstance;
+
         public List<Kategori> KategoriListele(int id)
         {
             List<Kategori> kategoriList = new List<Kategori>();

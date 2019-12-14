@@ -15,7 +15,8 @@ namespace SahibimdenBLL
     public class ResimBL : IDisposable
     {
         //Helper help = new Helper();
-        Helper help = Helper.getInstance();
+        //Helper help = Helper.getInstance();
+        Helper help = Helper.getInstance;
         public bool ResimEkle(byte[] img)
         {
             SqlParameter[] p = { new SqlParameter("@resim", img) };

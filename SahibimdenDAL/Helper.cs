@@ -18,17 +18,38 @@ namespace SahibimdenDAL
 
         private static Helper helper = null;
 
-        public static Helper getInstance()
+        //public static Helper getInstance()
+        //{
+        //    if (helper == null)
+        //    {
+        //        helper = new Helper();
+        //    }
+        //    if (helper.connection == null)
+        //    {
+        //        helper.connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
+        //    }
+        //    return helper;
+        //}
+
+        public static Helper getInstance
         {
-            if (helper == null)
+            get
             {
-                helper = new Helper();
+                if (Helper.helper == null)
+                {
+                    Helper.helper = new Helper();
+                }
+                if (Helper.helper.connection == null)
+                {
+                    Helper.helper.connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
+                }
+
+                return helper;
             }
-            if (helper.connection == null)
+            set
             {
-                helper.connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cstr"].ConnectionString);
+
             }
-            return helper;
         }
 
         public int ExecuteNonQuery(string cmdText, SqlParameter[] p, bool tStart = false)
@@ -66,6 +87,20 @@ namespace SahibimdenDAL
             OpenConnection();
 
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+        }
+
+        public DataTable GetDataTable(string cmdtext, SqlParameter[] p)
+        {
+            cmd = new SqlCommand(cmdtext, connection);
+
+            if (p != null)
+            {
+                cmd.Parameters.AddRange(p);
+            }
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }
 
         private void OpenConnection()

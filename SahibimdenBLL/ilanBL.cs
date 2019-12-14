@@ -12,7 +12,9 @@ namespace SahibimdenBLL
     public class IlanBL : IDisposable
     {
         //Helper help = new Helper();
-        Helper help = Helper.getInstance();
+        //Helper help = Helper.getInstance();
+        Helper help = Helper.getInstance;
+
         public bool IlanEkle(Ilan ilan)
         {
             SqlParameter[] p = { new SqlParameter("@aciklama", ilan.Aciklama), new SqlParameter("@id", ilan.ArabaId) };

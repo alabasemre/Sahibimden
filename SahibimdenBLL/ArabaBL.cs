@@ -14,7 +14,9 @@ namespace SahibimdenBLL
     public class ArabaBL : IDisposable
     {
         //Helper help = new Helper(); 
-        Helper help = Helper.getInstance();
+        //Helper help = Helper.getInstance();
+        Helper help = Helper.getInstance;
+
         public List<Araba> AracListele(int id)
         {
             List<Araba> marka = new List<Araba>();
@@ -91,11 +93,18 @@ namespace SahibimdenBLL
             return marka;
         }
 
+        public DataTable MarkaListele()
+        {
+            SqlParameter[] p = {new SqlParameter("@id",int.Parse("0")) };
+            return help.GetDataTable("SELECT araba_id,ad FROM tbl_araba WHERE ust_kategori=@id ",p);
+        }
+
         public bool ArabaEkle(Araba araba)
         {
             SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat", araba.UstKategori) };
             return 0 < help.ExecuteNonQuery("INSERT INTO tbl_araba (ad,ust_kategori) VALUES(@ad,@ustKat)",p);
         }
+
         public bool Guncelle(Araba araba)
         {
             SqlParameter[] p = { new SqlParameter("@id",araba.ArabaId),new SqlParameter("@ad", araba.Ad), new SqlParameter("@ustKat", araba.UstKategori) };
@@ -127,8 +136,7 @@ namespace SahibimdenBLL
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
-        }
-   
+        }   
 
         public void Commit()
         {
