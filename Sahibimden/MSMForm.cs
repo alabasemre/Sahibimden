@@ -90,7 +90,8 @@ namespace Sahibimden
                 seriList.RemoveAt(0);
 
                 dgvSeriList.DataSource = seriList;
-                dgvSeriList.Columns[2].Visible = false;
+                dgvSeriList.Columns[0].Visible = false;
+                dgvSeriList.Columns[2].Visible = false;               
 
             }
             catch (Exception)
@@ -133,6 +134,7 @@ namespace Sahibimden
                 modelList.RemoveAt(0);
 
                 dgvModelList.DataSource = modelList;
+                dgvModelList.Columns[0].Visible = false;
                 dgvModelList.Columns[2].Visible = false;
             }
             catch (Exception)
@@ -510,6 +512,11 @@ namespace Sahibimden
         {
             //dtSales.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, textBox1.Text);
             markaDT.DefaultView.RowFilter= string.Format("[{0}] LIKE '%{1}%'", "Ad", txtMarkaAra.Text);
+        }
+
+        private void MSMForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainFormYenile();
         }
     }
     

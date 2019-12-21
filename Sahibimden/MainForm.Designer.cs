@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAracEkle = new System.Windows.Forms.TabPage();
             this.pnlAciklamaHolder = new System.Windows.Forms.Panel();
             this.gbxAciklama = new System.Windows.Forms.GroupBox();
@@ -54,16 +54,16 @@
             this.btnKaydet = new System.Windows.Forms.Button();
             this.btnTemizle = new System.Windows.Forms.Button();
             this.tabMenu = new System.Windows.Forms.TabControl();
+            this.tabListe = new System.Windows.Forms.TabPage();
+            this.pnlAracListesi = new System.Windows.Forms.Panel();
+            this.dgvilan = new System.Windows.Forms.DataGridView();
+            this.pnlCBoxs = new System.Windows.Forms.Panel();
+            this.gbxChecks = new System.Windows.Forms.GroupBox();
             this.dialogResim = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuDosya = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMSMislem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOzellikIslem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlCBoxs = new System.Windows.Forms.Panel();
-            this.gbxChecks = new System.Windows.Forms.GroupBox();
-            this.pnlAracListesi = new System.Windows.Forms.Panel();
-            this.dgvilan = new System.Windows.Forms.DataGridView();
-            this.tabListe = new System.Windows.Forms.TabPage();
             this.tabAracEkle.SuspendLayout();
             this.pnlAciklamaHolder.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
@@ -76,11 +76,11 @@
             this.gbxBilgi.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.tabMenu.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.pnlCBoxs.SuspendLayout();
+            this.tabListe.SuspendLayout();
             this.pnlAracListesi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).BeginInit();
-            this.tabListe.SuspendLayout();
+            this.pnlCBoxs.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAracEkle
@@ -345,6 +345,78 @@
             this.tabMenu.Size = new System.Drawing.Size(896, 477);
             this.tabMenu.TabIndex = 1;
             // 
+            // tabListe
+            // 
+            this.tabListe.Controls.Add(this.pnlAracListesi);
+            this.tabListe.Controls.Add(this.pnlCBoxs);
+            this.tabListe.Location = new System.Drawing.Point(4, 23);
+            this.tabListe.Name = "tabListe";
+            this.tabListe.Size = new System.Drawing.Size(888, 450);
+            this.tabListe.TabIndex = 1;
+            this.tabListe.Text = "İlan Listesi";
+            this.tabListe.UseVisualStyleBackColor = true;
+            // 
+            // pnlAracListesi
+            // 
+            this.pnlAracListesi.Controls.Add(this.dgvilan);
+            this.pnlAracListesi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAracListesi.Location = new System.Drawing.Point(166, 0);
+            this.pnlAracListesi.Name = "pnlAracListesi";
+            this.pnlAracListesi.Size = new System.Drawing.Size(722, 450);
+            this.pnlAracListesi.TabIndex = 4;
+            // 
+            // dgvilan
+            // 
+            this.dgvilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvilan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvilan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvilan.Location = new System.Drawing.Point(0, 0);
+            this.dgvilan.Name = "dgvilan";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvilan.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvilan.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
+            this.dgvilan.RowTemplate.Height = 75;
+            this.dgvilan.RowTemplate.ReadOnly = true;
+            this.dgvilan.Size = new System.Drawing.Size(722, 450);
+            this.dgvilan.TabIndex = 1;
+            this.dgvilan.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvilan_CellDoubleClick);
+            // 
+            // pnlCBoxs
+            // 
+            this.pnlCBoxs.Controls.Add(this.gbxChecks);
+            this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
+            this.pnlCBoxs.Name = "pnlCBoxs";
+            this.pnlCBoxs.Size = new System.Drawing.Size(166, 450);
+            this.pnlCBoxs.TabIndex = 3;
+            // 
+            // gbxChecks
+            // 
+            this.gbxChecks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbxChecks.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxChecks.Location = new System.Drawing.Point(0, 0);
+            this.gbxChecks.Name = "gbxChecks";
+            this.gbxChecks.Size = new System.Drawing.Size(166, 450);
+            this.gbxChecks.TabIndex = 0;
+            this.gbxChecks.TabStop = false;
+            this.gbxChecks.Text = "Görüntülenen Özellikler";
+            // 
             // dialogResim
             // 
             this.dialogResim.FileName = "openFileDialog1";
@@ -382,78 +454,7 @@
             this.menuOzellikIslem.Name = "menuOzellikIslem";
             this.menuOzellikIslem.Size = new System.Drawing.Size(219, 22);
             this.menuOzellikIslem.Text = "Özellik İşlemleri";
-            // 
-            // pnlCBoxs
-            // 
-            this.pnlCBoxs.Controls.Add(this.gbxChecks);
-            this.pnlCBoxs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCBoxs.Location = new System.Drawing.Point(0, 0);
-            this.pnlCBoxs.Name = "pnlCBoxs";
-            this.pnlCBoxs.Size = new System.Drawing.Size(166, 450);
-            this.pnlCBoxs.TabIndex = 3;
-            // 
-            // gbxChecks
-            // 
-            this.gbxChecks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbxChecks.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxChecks.Location = new System.Drawing.Point(0, 0);
-            this.gbxChecks.Name = "gbxChecks";
-            this.gbxChecks.Size = new System.Drawing.Size(166, 450);
-            this.gbxChecks.TabIndex = 0;
-            this.gbxChecks.TabStop = false;
-            this.gbxChecks.Text = "Görüntülenen Özellikler";
-            // 
-            // pnlAracListesi
-            // 
-            this.pnlAracListesi.Controls.Add(this.dgvilan);
-            this.pnlAracListesi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAracListesi.Location = new System.Drawing.Point(166, 0);
-            this.pnlAracListesi.Name = "pnlAracListesi";
-            this.pnlAracListesi.Size = new System.Drawing.Size(722, 450);
-            this.pnlAracListesi.TabIndex = 4;
-            // 
-            // dgvilan
-            // 
-            this.dgvilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvilan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvilan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvilan.Location = new System.Drawing.Point(0, 0);
-            this.dgvilan.Name = "dgvilan";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvilan.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvilan.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
-            this.dgvilan.RowTemplate.Height = 75;
-            this.dgvilan.RowTemplate.ReadOnly = true;
-            this.dgvilan.Size = new System.Drawing.Size(722, 450);
-            this.dgvilan.TabIndex = 1;
-            this.dgvilan.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvilan_CellDoubleClick);
-            // 
-            // tabListe
-            // 
-            this.tabListe.Controls.Add(this.pnlAracListesi);
-            this.tabListe.Controls.Add(this.pnlCBoxs);
-            this.tabListe.Location = new System.Drawing.Point(4, 23);
-            this.tabListe.Name = "tabListe";
-            this.tabListe.Size = new System.Drawing.Size(888, 450);
-            this.tabListe.TabIndex = 1;
-            this.tabListe.Text = "İlan Listesi";
-            this.tabListe.UseVisualStyleBackColor = true;
+            this.menuOzellikIslem.Click += new System.EventHandler(this.menuOzellikIslem_Click);
             // 
             // MainForm
             // 
@@ -479,12 +480,12 @@
             this.gbxBilgi.ResumeLayout(false);
             this.pnlButtons.ResumeLayout(false);
             this.tabMenu.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.pnlCBoxs.ResumeLayout(false);
+            this.tabListe.ResumeLayout(false);
             this.pnlAracListesi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvilan)).EndInit();
-            this.tabListe.ResumeLayout(false);
+            this.pnlCBoxs.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

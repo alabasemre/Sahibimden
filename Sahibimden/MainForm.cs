@@ -449,5 +449,11 @@ namespace Sahibimden
             AracDetay frmAracDetay = new AracDetay((int)dgvilan.CurrentRow.Cells[0].Value);
             frmAracDetay.ShowDialog();
         }
+
+        private void menuOzellikIslem_Click(object sender, EventArgs e)
+        {
+            OzellikForm ozellikForm = new OzellikForm();
+            ozellikForm.ShowDialog();
+        }
     }
 }
