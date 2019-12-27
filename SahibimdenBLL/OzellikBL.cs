@@ -27,6 +27,13 @@ namespace SahibimdenBLL
             return sonuc == 1;
         }
 
+        public bool ArabaOzellikGuncelle(Ozellik ozl)
+        {
+            SqlParameter[] p = { new SqlParameter("@ilanid", ozl.ilan_id), new SqlParameter("@kategoriid",ozl.kategori_id),new SqlParameter("@deger",ozl.deger) };
+
+            return help.ExecuteNonQuery("UPDATE tbl_deger set deger=@deger WHERE ilan_id=@ilanid AND kategori_id=@kategoriid", p,true)>0;
+        }
+
         public List<Ozellik> OzellikGetir(string ad)
         {
             List<Ozellik> ozellikler = new List<Ozellik>();

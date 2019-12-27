@@ -24,6 +24,13 @@ namespace SahibimdenBLL
             return 0 < help.ExecuteNonQuery("INSERT INTO tbl_resim (ilan_id,resim) VALUES((SELECT MAX(ilan_id) FROM tbl_ilan),@resim)", p,true);
         }
 
+        public bool ResimGuncelle(byte[] img,int id)
+        {
+            SqlParameter[] p = { new SqlParameter("@resim", img),new SqlParameter("@ilanid",id) };
+
+            return help.ExecuteNonQuery("UPDATE tbl_resim set resim=@resim WHERE ilan_id=@ilanid",p,true)>0;
+        }
+
         //public List<Resim> ResimListele()
         //{
         //    List<Resim> resimler = new List<Resim>();
@@ -49,6 +56,25 @@ namespace SahibimdenBLL
         //    ms.Dispose();
         //    return resimler;
         //}
+
+        public Image ArabaResmi(int id)
+        {
+            Image araba = null;
+
+            SqlParameter[] p = { new SqlParameter("@ilanid", id) };
+            SqlDataReader dr = help.ExecuteReader("SELECT resim FROM tbl_resim WHERE ilan_id=@ilanid", p);
+            MemoryStream ms = null;
+            if (dr.Read())
+            {
+                byte[] resim = (byte[])dr["resim"];
+                ms = new MemoryStream(resim, 0, resim.Length);
+                ms.Write(resim, 0, resim.Length);
+                araba = Image.FromStream(ms, true);
+            }
+            dr.Close();
+            ms.Dispose();
+            return araba;
+        }
 
         public void Dispose()
         {

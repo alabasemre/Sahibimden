@@ -27,8 +27,10 @@
             this.pnlMarkaListHolder = new System.Windows.Forms.Panel();
             this.gbxMarkaList = new System.Windows.Forms.GroupBox();
             this.dgvMarkaList = new System.Windows.Forms.DataGridView();
+            this.clmMarka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMarkaHolder = new System.Windows.Forms.Panel();
             this.gbxMarkaIslem = new System.Windows.Forms.GroupBox();
+            this.btnKaydet = new System.Windows.Forms.Button();
             this.txtMarkaAra = new System.Windows.Forms.TextBox();
             this.lblMarkaAra = new System.Windows.Forms.Label();
             this.tabSeri = new System.Windows.Forms.TabPage();
@@ -61,8 +63,6 @@
             this.btnModelTemizle = new System.Windows.Forms.Button();
             this.btnModelEkle = new System.Windows.Forms.Button();
             this.lblMSeri = new System.Windows.Forms.Label();
-            this.clmMarka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnKaydet = new System.Windows.Forms.Button();
             this.pnlArkaPlan.SuspendLayout();
             this.tabMSM.SuspendLayout();
             this.tabMarka.SuspendLayout();
@@ -158,6 +158,12 @@
             this.dgvMarkaList.Size = new System.Drawing.Size(279, 170);
             this.dgvMarkaList.TabIndex = 0;
             // 
+            // clmMarka
+            // 
+            this.clmMarka.DataPropertyName = "ad";
+            this.clmMarka.HeaderText = "Marka";
+            this.clmMarka.Name = "clmMarka";
+            // 
             // pnlMarkaHolder
             // 
             this.pnlMarkaHolder.BackColor = System.Drawing.Color.Aqua;
@@ -170,6 +176,7 @@
             // 
             // gbxMarkaIslem
             // 
+            this.gbxMarkaIslem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbxMarkaIslem.Controls.Add(this.btnKaydet);
             this.gbxMarkaIslem.Controls.Add(this.txtMarkaAra);
             this.gbxMarkaIslem.Controls.Add(this.lblMarkaAra);
@@ -181,6 +188,16 @@
             this.gbxMarkaIslem.TabIndex = 0;
             this.gbxMarkaIslem.TabStop = false;
             this.gbxMarkaIslem.Text = "Marka İslemleri";
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Location = new System.Drawing.Point(80, 131);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(115, 39);
+            this.btnKaydet.TabIndex = 11;
+            this.btnKaydet.Text = "Değişiklikleri Kaydet";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // txtMarkaAra
             // 
@@ -266,7 +283,7 @@
             // 
             // gbxSeriIslem
             // 
-            this.gbxSeriIslem.BackColor = System.Drawing.Color.Aqua;
+            this.gbxSeriIslem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbxSeriIslem.Controls.Add(this.btnSeriSil);
             this.gbxSeriIslem.Controls.Add(this.txtSeri);
             this.gbxSeriIslem.Controls.Add(this.cmbMarka);
@@ -417,7 +434,7 @@
             // 
             // gbxModelislem
             // 
-            this.gbxModelislem.BackColor = System.Drawing.Color.Aqua;
+            this.gbxModelislem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.gbxModelislem.Controls.Add(this.cmbModMarka);
             this.gbxModelislem.Controls.Add(this.label1);
             this.gbxModelislem.Controls.Add(this.btnModelSil);
@@ -522,22 +539,6 @@
             this.lblMSeri.Size = new System.Drawing.Size(27, 14);
             this.lblMSeri.TabIndex = 7;
             this.lblMSeri.Text = "Seri";
-            // 
-            // clmMarka
-            // 
-            this.clmMarka.DataPropertyName = "ad";
-            this.clmMarka.HeaderText = "Marka";
-            this.clmMarka.Name = "clmMarka";
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.Location = new System.Drawing.Point(80, 131);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(115, 39);
-            this.btnKaydet.TabIndex = 11;
-            this.btnKaydet.Text = "Değişiklikleri Kaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // MSMForm
             // 

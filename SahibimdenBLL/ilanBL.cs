@@ -19,9 +19,37 @@ namespace SahibimdenBLL
         {
             SqlParameter[] p = { new SqlParameter("@aciklama", ilan.Aciklama), new SqlParameter("@id", ilan.ArabaId) };
 
-            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_ilan (aciklama,araba_id) VALUES(@aciklama,@id)", p,true);
-        }      
-     
+            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_ilan (aciklama,araba_id) VALUES(@aciklama,@id)", p, true);
+        }
+
+        public Ilan IlanBilgisi(int id)
+        {
+            SqlParameter[] p = { new SqlParameter("@ilanid", id) };
+            Ilan ilan = null;
+            SqlDataReader dr = help.ExecuteReader("SELECT aciklama,ilan_tarihi FROM tbl_ilan WHERE ilan_id=@ilanid", p);
+            if (dr.Read())
+            {
+                ilan = new Ilan();
+                ilan.Aciklama = dr["aciklama"].ToString();
+                ilan.IlanTarihi = (DateTime)dr["ilan_tarihi"];
+            }
+            dr.Close();
+            return ilan;
+        }
+
+        public bool IlanGuncelle(Ilan iln)
+        {
+            SqlParameter[] p = { new SqlParameter("@ilanid", iln.IlanId), new SqlParameter("@aciklama", iln.Aciklama), new SqlParameter("@arabaid", iln.ArabaId) };
+            return help.ExecuteNonQuery("UPDATE tbl_ilan set aciklama=@aciklama,araba_id=@arabaid WHERE ilan_id=@ilanid",p,true) > 0;
+        }
+
+        public bool IlanSil(int id)
+        {
+            SqlParameter[] p = { new SqlParameter("@ilanid", id) };
+
+            return help.ExecuteNonQuery("DELETE FROM tbl_ilan WHERE ilan_id=@ilanid", p) > 0;
+        }
+
         public void Dispose()
         {
             help.Dispose();
@@ -38,7 +66,7 @@ namespace SahibimdenBLL
 
         public void Rollback()
         {
-            help.Rollback();          
+            help.Rollback();
         }
     }
 }

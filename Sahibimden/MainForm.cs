@@ -26,8 +26,9 @@ namespace Sahibimden
         OzellikBL ozellikBL = null;
         ResimBL resimBL = null;
         ListeBL listeBL = null;
-
         string resimYolu = string.Empty;
+        public int ilanid = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -47,37 +48,66 @@ namespace Sahibimden
                 // TODO
             }
         }
+
         public void GetMarka()
         {
-            araba = new ArabaBL();
+            try
+            {
+                araba = new ArabaBL();
 
-            cmbMarka.DisplayMember = "Ad";
-            cmbMarka.ValueMember = "ArabaId";
-            cmbMarka.DataSource = araba.AracListele(0);
-
-            araba.Dispose();
+                cmbMarka.DisplayMember = "Ad";
+                cmbMarka.ValueMember = "ArabaId";
+                cmbMarka.DataSource = araba.AracListele(0);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                araba.Dispose();
+            }
         }
         private void GetSeri()
         {
-            araba = new ArabaBL();
+            try
+            {
+                araba = new ArabaBL();
 
-            cmbSeri.Enabled = true;
-            cmbSeri.DisplayMember = "Ad";
-            cmbSeri.ValueMember = "ArabaId";
-            cmbSeri.DataSource = araba.AracListele((int)cmbMarka.SelectedValue);
+                cmbSeri.Enabled = true;
+                cmbSeri.DisplayMember = "Ad";
+                cmbSeri.ValueMember = "ArabaId";
+                cmbSeri.DataSource = araba.AracListele((int)cmbMarka.SelectedValue);
+            }
+            //catch (Exception)
+            //{
 
-            araba.Dispose();
+            //}
+            finally
+            {
+                araba.Dispose();
+            }
+
         }
         private void GetModel()
         {
-            araba = new ArabaBL();
+            try
+            {
+                araba = new ArabaBL();
 
-            cmbModel.Enabled = true;
-            cmbModel.DisplayMember = "Ad";
-            cmbModel.ValueMember = "ArabaId";
-            cmbModel.DataSource = araba.AracListele((int)cmbSeri.SelectedValue);
+                cmbModel.Enabled = true;
+                cmbModel.DisplayMember = "Ad";
+                cmbModel.ValueMember = "ArabaId";
+                cmbModel.DataSource = araba.AracListele((int)cmbSeri.SelectedValue);
+            }
+            catch (Exception)
+            {
 
-            araba.Dispose();
+            }
+            finally
+            {
+                araba.Dispose();
+            }
         }
 
         private void FormOlustur()
@@ -101,7 +131,7 @@ namespace Sahibimden
                 }
                 label.Location = new Point(10, i * 25 + 10);
                 pnlLabel.Controls.Add(label);
-            }           
+            }
             kategori.Dispose();
         }
 
@@ -179,7 +209,7 @@ namespace Sahibimden
                         {
                             return;
                         }
-                      
+
                         ilanBL.Commit();
                         MessageBox.Show("Ekleme Başarılı");
                         ListeYenile();
@@ -201,11 +231,11 @@ namespace Sahibimden
                 MessageBox.Show("Veritabanı Hatası İşlem Geri Alındı");
                 if (ilanBL != null)
                 {
-                    MessageBox.Show("Test");
+                    MessageBox.Show("Hata:" + ex.Number);
                     ilanBL.Rollback();
-                }              
+                }
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 MessageBox.Show("Verileri Rakamsal Girin....");
             }
@@ -214,7 +244,7 @@ namespace Sahibimden
                 if (ilanBL != null)
                 {
                     ilanBL.Dispose();
-                }              
+                }
             }
         }
 
@@ -316,12 +346,19 @@ namespace Sahibimden
 
         private void btnResimEkle_Click(object sender, EventArgs e)
         {
-            dialogResim.Title = "Resim Seçimi";
-            dialogResim.Filter = "Jpeg Dosyası (*.jpg)|*.jpg";
-            if (dialogResim.ShowDialog() == DialogResult.OK)
+            try
             {
-                picBoxAraba.Image = Image.FromFile(dialogResim.FileName);
-                resimYolu = dialogResim.FileName.ToString();
+                dialogResim.Title = "Resim Seçimi";
+                dialogResim.Filter = "Jpeg Dosyası (*.jpg)|*.jpg";
+                if (dialogResim.ShowDialog() == DialogResult.OK)
+                {
+                    picBoxAraba.Image = Image.FromFile(dialogResim.FileName);
+                    resimYolu = dialogResim.FileName.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -428,7 +465,7 @@ namespace Sahibimden
         {
             cmbMarka.SelectedIndex = 0;
             picBoxAraba.Image = null;
-
+            richBoxAciklama.Text = String.Empty;
             for (int i = 0; i < pnlBoxs.Controls.Count; i++)
             {
                 if (pnlBoxs.Controls[i] is TextBox)
@@ -436,6 +473,10 @@ namespace Sahibimden
                     pnlBoxs.Controls[i].Text = "";
                 }
             }
+            resimYolu = String.Empty;
+            ilanid = 0;
+            btnGuncelle.Visible = false;
+            btnKaydet.Visible = true;
         }
 
         private void menuMSMislem_Click(object sender, EventArgs e)
@@ -446,7 +487,12 @@ namespace Sahibimden
 
         private void dgvilan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AracDetay frmAracDetay = new AracDetay((int)dgvilan.CurrentRow.Cells[0].Value);
+            string marka, seri, model;
+            marka = dgvilan.CurrentRow.Cells["Marka"].Value.ToString();
+            seri = dgvilan.CurrentRow.Cells["Seri"].Value.ToString();
+            model = dgvilan.CurrentRow.Cells["Model"].Value.ToString();
+            string[] msm = { marka, seri, model };
+            AracDetay frmAracDetay = new AracDetay((int)dgvilan.CurrentRow.Cells[0].Value, msm);
             frmAracDetay.ShowDialog();
         }
 
@@ -454,6 +500,144 @@ namespace Sahibimden
         {
             OzellikForm ozellikForm = new OzellikForm();
             ozellikForm.ShowDialog();
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (IlanKontrol() && OzellikKontrol())
+                {
+                    if (MessageBox.Show("Güncelleme İşlemini Onaylıyor Musunuz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (IlanGuncelle())
+                        {
+                            OzellikGuncelle();
+                            ResimGuncelle();
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+                        ilanBL.Commit();
+                        MessageBox.Show("Güncelleme Başarılı", "İşlem Tamamlandı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Temizle();
+                        ListeYenile();
+                    }
+                    else
+                    {
+                        MessageBox.Show("İşlem İptal Edildi", "İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Araba Seçimi Yapın ve Boş Alanları Doldurun Resim Eklemeyi Unutmayın....");
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Veritabanı Hatası İşlem Geri Alındı");
+                if (ilanBL != null)
+                {
+                    MessageBox.Show("Hata:" + ex.Number);
+                    ilanBL.Rollback();
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Verileri Rakamsal Girin");
+            }
+            finally
+            {
+                if (ilanBL != null) ilanBL.Dispose();
+            }
+        }
+
+        private bool IlanGuncelle()
+        {
+            try
+            {
+                ilanBL = new IlanBL();
+                Ilan iln = new Ilan();
+
+                iln.IlanId = this.ilanid;
+                iln.ArabaId = (int)cmbModel.SelectedValue;
+                iln.Aciklama = richBoxAciklama.Text;
+
+                return ilanBL.IlanGuncelle(iln);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                ilanBL.DisposeCmd();
+            }
+        }
+
+        private void ResimGuncelle()
+        {
+            try
+            {
+                if (resimYolu != String.Empty)
+                {
+                    resimBL = new ResimBL();
+                    byte[] resim = null;
+                    FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    resim = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    br.Dispose();
+                    fs.Close();
+                    fs.Dispose();
+                    resimBL.ResimGuncelle(resim, ilanid);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (resimBL != null)
+                {
+                    resimBL.DisposeCmd();
+                }
+            }
+        }
+
+        private void OzellikGuncelle()
+        {
+            ozellikBL = new OzellikBL();
+            try
+            {
+                for (int i = 0; i < kategoriler.Count; i++)
+                {
+                    Ozellik ozellik = new Ozellik();
+                    ozellik.kategori_id = kategoriler[i].KategoriId;
+                    ozellik.ilan_id = this.ilanid;
+                    if (pnlBoxs.Controls[i] is TextBox)
+                    {
+                        ozellik.deger = pnlBoxs.Controls[i].Text.Trim();
+                    }
+                    else
+                    {
+                        ComboBox cmb = (ComboBox)pnlBoxs.Controls[i];
+                        ozellik.deger = cmb.SelectedValue.ToString();
+                    }
+                    ozellikBL.ArabaOzellikGuncelle(ozellik);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                ozellikBL.DisposeCmd();
+            }
         }
     }
 }

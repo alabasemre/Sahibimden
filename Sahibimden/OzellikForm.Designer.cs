@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabUstKategori = new System.Windows.Forms.TabPage();
-            this.tabSecenekEkle = new System.Windows.Forms.TabPage();
             this.pnlBg = new System.Windows.Forms.Panel();
             this.btnVazgec = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
@@ -40,22 +39,23 @@
             this.dgvUstKategori = new System.Windows.Forms.DataGridView();
             this.clmKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmKategoriId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabSecenekEkle = new System.Windows.Forms.TabPage();
             this.pnlSecenekBg = new System.Windows.Forms.Panel();
-            this.dgvSecenek = new System.Windows.Forms.DataGridView();
-            this.cmbUstKategori = new System.Windows.Forms.ComboBox();
-            this.lblCmbKategori = new System.Windows.Forms.Label();
-            this.txtSecenek = new System.Windows.Forms.TextBox();
-            this.lblSecenek = new System.Windows.Forms.Label();
-            this.btnSecenekEkle = new System.Windows.Forms.Button();
-            this.btnSecenekVazgec = new System.Windows.Forms.Button();
             this.btnSecenekSil = new System.Windows.Forms.Button();
+            this.btnSecenekVazgec = new System.Windows.Forms.Button();
+            this.btnSecenekEkle = new System.Windows.Forms.Button();
+            this.lblSecenek = new System.Windows.Forms.Label();
+            this.txtSecenek = new System.Windows.Forms.TextBox();
+            this.lblCmbKategori = new System.Windows.Forms.Label();
+            this.cmbUstKategori = new System.Windows.Forms.ComboBox();
+            this.dgvSecenek = new System.Windows.Forms.DataGridView();
             this.clmAltKategoriId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSecenek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabUstKategori.SuspendLayout();
-            this.tabSecenekEkle.SuspendLayout();
             this.pnlBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUstKategori)).BeginInit();
+            this.tabSecenekEkle.SuspendLayout();
             this.pnlSecenekBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecenek)).BeginInit();
             this.SuspendLayout();
@@ -83,20 +83,9 @@
             this.tabUstKategori.Text = "Üst Kategori ";
             this.tabUstKategori.UseVisualStyleBackColor = true;
             // 
-            // tabSecenekEkle
-            // 
-            this.tabSecenekEkle.Controls.Add(this.pnlSecenekBg);
-            this.tabSecenekEkle.Location = new System.Drawing.Point(4, 21);
-            this.tabSecenekEkle.Name = "tabSecenekEkle";
-            this.tabSecenekEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSecenekEkle.Size = new System.Drawing.Size(475, 162);
-            this.tabSecenekEkle.TabIndex = 1;
-            this.tabSecenekEkle.Text = "Seçenek Ekle";
-            this.tabSecenekEkle.UseVisualStyleBackColor = true;
-            // 
             // pnlBg
             // 
-            this.pnlBg.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlBg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pnlBg.Controls.Add(this.btnVazgec);
             this.pnlBg.Controls.Add(this.btnSil);
             this.pnlBg.Controls.Add(this.lblKategori);
@@ -188,9 +177,20 @@
             this.clmKategoriId.Name = "clmKategoriId";
             this.clmKategoriId.Visible = false;
             // 
+            // tabSecenekEkle
+            // 
+            this.tabSecenekEkle.Controls.Add(this.pnlSecenekBg);
+            this.tabSecenekEkle.Location = new System.Drawing.Point(4, 21);
+            this.tabSecenekEkle.Name = "tabSecenekEkle";
+            this.tabSecenekEkle.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSecenekEkle.Size = new System.Drawing.Size(475, 162);
+            this.tabSecenekEkle.TabIndex = 1;
+            this.tabSecenekEkle.Text = "Seçenek Ekle";
+            this.tabSecenekEkle.UseVisualStyleBackColor = true;
+            // 
             // pnlSecenekBg
             // 
-            this.pnlSecenekBg.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlSecenekBg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pnlSecenekBg.Controls.Add(this.btnSecenekSil);
             this.pnlSecenekBg.Controls.Add(this.btnSecenekVazgec);
             this.pnlSecenekBg.Controls.Add(this.btnSecenekEkle);
@@ -205,6 +205,72 @@
             this.pnlSecenekBg.Size = new System.Drawing.Size(469, 156);
             this.pnlSecenekBg.TabIndex = 0;
             // 
+            // btnSecenekSil
+            // 
+            this.btnSecenekSil.Location = new System.Drawing.Point(77, 125);
+            this.btnSecenekSil.Name = "btnSecenekSil";
+            this.btnSecenekSil.Size = new System.Drawing.Size(75, 23);
+            this.btnSecenekSil.TabIndex = 7;
+            this.btnSecenekSil.Text = "Sil";
+            this.btnSecenekSil.UseVisualStyleBackColor = true;
+            this.btnSecenekSil.Visible = false;
+            this.btnSecenekSil.Click += new System.EventHandler(this.btnSecenekSil_Click);
+            // 
+            // btnSecenekVazgec
+            // 
+            this.btnSecenekVazgec.Location = new System.Drawing.Point(77, 95);
+            this.btnSecenekVazgec.Name = "btnSecenekVazgec";
+            this.btnSecenekVazgec.Size = new System.Drawing.Size(75, 23);
+            this.btnSecenekVazgec.TabIndex = 6;
+            this.btnSecenekVazgec.Text = "Vazgec";
+            this.btnSecenekVazgec.UseVisualStyleBackColor = true;
+            this.btnSecenekVazgec.Click += new System.EventHandler(this.btnSecenekVazgec_Click);
+            // 
+            // btnSecenekEkle
+            // 
+            this.btnSecenekEkle.Location = new System.Drawing.Point(77, 65);
+            this.btnSecenekEkle.Name = "btnSecenekEkle";
+            this.btnSecenekEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnSecenekEkle.TabIndex = 5;
+            this.btnSecenekEkle.Text = "Ekle";
+            this.btnSecenekEkle.UseVisualStyleBackColor = true;
+            this.btnSecenekEkle.Click += new System.EventHandler(this.btnSecenekEkle_Click);
+            // 
+            // lblSecenek
+            // 
+            this.lblSecenek.AutoSize = true;
+            this.lblSecenek.Location = new System.Drawing.Point(7, 44);
+            this.lblSecenek.Name = "lblSecenek";
+            this.lblSecenek.Size = new System.Drawing.Size(48, 12);
+            this.lblSecenek.TabIndex = 4;
+            this.lblSecenek.Text = "Seçenek";
+            // 
+            // txtSecenek
+            // 
+            this.txtSecenek.Location = new System.Drawing.Point(77, 38);
+            this.txtSecenek.Name = "txtSecenek";
+            this.txtSecenek.Size = new System.Drawing.Size(114, 20);
+            this.txtSecenek.TabIndex = 3;
+            // 
+            // lblCmbKategori
+            // 
+            this.lblCmbKategori.AutoSize = true;
+            this.lblCmbKategori.Location = new System.Drawing.Point(5, 15);
+            this.lblCmbKategori.Name = "lblCmbKategori";
+            this.lblCmbKategori.Size = new System.Drawing.Size(66, 12);
+            this.lblCmbKategori.TabIndex = 2;
+            this.lblCmbKategori.Text = "Üst Kategori";
+            // 
+            // cmbUstKategori
+            // 
+            this.cmbUstKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUstKategori.FormattingEnabled = true;
+            this.cmbUstKategori.Location = new System.Drawing.Point(77, 12);
+            this.cmbUstKategori.Name = "cmbUstKategori";
+            this.cmbUstKategori.Size = new System.Drawing.Size(134, 20);
+            this.cmbUstKategori.TabIndex = 1;
+            this.cmbUstKategori.SelectedIndexChanged += new System.EventHandler(this.cmbUstKategori_SelectedIndexChanged);
+            // 
             // dgvSecenek
             // 
             this.dgvSecenek.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -218,72 +284,6 @@
             this.dgvSecenek.Size = new System.Drawing.Size(252, 156);
             this.dgvSecenek.TabIndex = 0;
             this.dgvSecenek.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSecenek_CellClick);
-            // 
-            // cmbUstKategori
-            // 
-            this.cmbUstKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUstKategori.FormattingEnabled = true;
-            this.cmbUstKategori.Location = new System.Drawing.Point(77, 12);
-            this.cmbUstKategori.Name = "cmbUstKategori";
-            this.cmbUstKategori.Size = new System.Drawing.Size(134, 20);
-            this.cmbUstKategori.TabIndex = 1;
-            this.cmbUstKategori.SelectedIndexChanged += new System.EventHandler(this.cmbUstKategori_SelectedIndexChanged);
-            // 
-            // lblCmbKategori
-            // 
-            this.lblCmbKategori.AutoSize = true;
-            this.lblCmbKategori.Location = new System.Drawing.Point(5, 15);
-            this.lblCmbKategori.Name = "lblCmbKategori";
-            this.lblCmbKategori.Size = new System.Drawing.Size(66, 12);
-            this.lblCmbKategori.TabIndex = 2;
-            this.lblCmbKategori.Text = "Üst Kategori";
-            // 
-            // txtSecenek
-            // 
-            this.txtSecenek.Location = new System.Drawing.Point(77, 38);
-            this.txtSecenek.Name = "txtSecenek";
-            this.txtSecenek.Size = new System.Drawing.Size(114, 20);
-            this.txtSecenek.TabIndex = 3;
-            // 
-            // lblSecenek
-            // 
-            this.lblSecenek.AutoSize = true;
-            this.lblSecenek.Location = new System.Drawing.Point(7, 44);
-            this.lblSecenek.Name = "lblSecenek";
-            this.lblSecenek.Size = new System.Drawing.Size(48, 12);
-            this.lblSecenek.TabIndex = 4;
-            this.lblSecenek.Text = "Seçenek";
-            // 
-            // btnSecenekEkle
-            // 
-            this.btnSecenekEkle.Location = new System.Drawing.Point(77, 65);
-            this.btnSecenekEkle.Name = "btnSecenekEkle";
-            this.btnSecenekEkle.Size = new System.Drawing.Size(75, 23);
-            this.btnSecenekEkle.TabIndex = 5;
-            this.btnSecenekEkle.Text = "Ekle";
-            this.btnSecenekEkle.UseVisualStyleBackColor = true;
-            this.btnSecenekEkle.Click += new System.EventHandler(this.btnSecenekEkle_Click);
-            // 
-            // btnSecenekVazgec
-            // 
-            this.btnSecenekVazgec.Location = new System.Drawing.Point(77, 95);
-            this.btnSecenekVazgec.Name = "btnSecenekVazgec";
-            this.btnSecenekVazgec.Size = new System.Drawing.Size(75, 23);
-            this.btnSecenekVazgec.TabIndex = 6;
-            this.btnSecenekVazgec.Text = "Vazgec";
-            this.btnSecenekVazgec.UseVisualStyleBackColor = true;
-            this.btnSecenekVazgec.Click += new System.EventHandler(this.btnSecenekVazgec_Click);
-            // 
-            // btnSecenekSil
-            // 
-            this.btnSecenekSil.Location = new System.Drawing.Point(77, 125);
-            this.btnSecenekSil.Name = "btnSecenekSil";
-            this.btnSecenekSil.Size = new System.Drawing.Size(75, 23);
-            this.btnSecenekSil.TabIndex = 7;
-            this.btnSecenekSil.Text = "Sil";
-            this.btnSecenekSil.UseVisualStyleBackColor = true;
-            this.btnSecenekSil.Visible = false;
-            this.btnSecenekSil.Click += new System.EventHandler(this.btnSecenekSil_Click);
             // 
             // clmAltKategoriId
             // 
@@ -311,10 +311,10 @@
             this.Load += new System.EventHandler(this.OzellikForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabUstKategori.ResumeLayout(false);
-            this.tabSecenekEkle.ResumeLayout(false);
             this.pnlBg.ResumeLayout(false);
             this.pnlBg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUstKategori)).EndInit();
+            this.tabSecenekEkle.ResumeLayout(false);
             this.pnlSecenekBg.ResumeLayout(false);
             this.pnlSecenekBg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSecenek)).EndInit();

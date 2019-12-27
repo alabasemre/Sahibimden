@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabAracEkle = new System.Windows.Forms.TabPage();
             this.pnlAciklamaHolder = new System.Windows.Forms.Panel();
             this.gbxAciklama = new System.Windows.Forms.GroupBox();
@@ -64,6 +64,7 @@
             this.menuDosya = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMSMislem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOzellikIslem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.tabAracEkle.SuspendLayout();
             this.pnlAciklamaHolder.SuspendLayout();
             this.gbxAciklama.SuspendLayout();
@@ -182,6 +183,7 @@
             // picBoxAraba
             // 
             this.picBoxAraba.BackColor = System.Drawing.Color.White;
+            this.picBoxAraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picBoxAraba.Location = new System.Drawing.Point(301, 11);
             this.picBoxAraba.Name = "picBoxAraba";
             this.picBoxAraba.Size = new System.Drawing.Size(272, 133);
@@ -303,6 +305,7 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.Controls.Add(this.btnGuncelle);
             this.pnlButtons.Controls.Add(this.btnKaydet);
             this.pnlButtons.Controls.Add(this.btnTemizle);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -314,9 +317,9 @@
             // btnKaydet
             // 
             this.btnKaydet.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(152, 5);
+            this.btnKaydet.Location = new System.Drawing.Point(189, 5);
             this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(96, 31);
+            this.btnKaydet.Size = new System.Drawing.Size(77, 31);
             this.btnKaydet.TabIndex = 1;
             this.btnKaydet.Text = "İlan Ekle";
             this.btnKaydet.UseVisualStyleBackColor = true;
@@ -325,9 +328,9 @@
             // btnTemizle
             // 
             this.btnTemizle.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTemizle.Location = new System.Drawing.Point(50, 5);
+            this.btnTemizle.Location = new System.Drawing.Point(105, 5);
             this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(96, 31);
+            this.btnTemizle.Size = new System.Drawing.Size(78, 31);
             this.btnTemizle.TabIndex = 2;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
@@ -368,26 +371,26 @@
             // dgvilan
             // 
             this.dgvilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvilan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvilan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvilan.Location = new System.Drawing.Point(0, 0);
             this.dgvilan.Name = "dgvilan";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvilan.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvilan.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dgvilan.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvilan.RowTemplate.DefaultCellStyle.NullValue = null;
@@ -456,6 +459,18 @@
             this.menuOzellikIslem.Text = "Özellik İşlemleri";
             this.menuOzellikIslem.Click += new System.EventHandler(this.menuOzellikIslem_Click);
             // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.Location = new System.Drawing.Point(22, 5);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(77, 31);
+            this.btnGuncelle.TabIndex = 3;
+            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.Visible = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,28 +509,20 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabAracEkle;
-        private System.Windows.Forms.TabControl tabMenu;
         private System.Windows.Forms.GroupBox grpAraba;
-        private System.Windows.Forms.ComboBox cmbModel;
-        private System.Windows.Forms.ComboBox cmbSeri;
-        private System.Windows.Forms.ComboBox cmbMarka;
         private System.Windows.Forms.Label lblSeri;
         private System.Windows.Forms.Label lblModel;
         private System.Windows.Forms.Label lblMarka;
         private System.Windows.Forms.GroupBox gbxAciklama;
         private System.Windows.Forms.Button btnResimEkle;
-        private System.Windows.Forms.PictureBox picBoxAraba;
         private System.Windows.Forms.OpenFileDialog dialogResim;
         private System.Windows.Forms.Panel pnlAciklamaHolder;
         private System.Windows.Forms.Panel pnlAciklama;
-        private System.Windows.Forms.RichTextBox richBoxAciklama;
         private System.Windows.Forms.Panel pnlArabaSecimi;
         private System.Windows.Forms.Panel pnlAracBilgisi;
         private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.GroupBox gbxBilgi;
         private System.Windows.Forms.Panel pnlLabel;
-        private System.Windows.Forms.Panel pnlBoxs;
         private System.Windows.Forms.Panel pnlBilgiUst;
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -527,6 +534,15 @@
         private System.Windows.Forms.DataGridView dgvilan;
         private System.Windows.Forms.Panel pnlCBoxs;
         private System.Windows.Forms.GroupBox gbxChecks;
+        public System.Windows.Forms.Panel pnlBoxs;
+        public System.Windows.Forms.TabControl tabMenu;
+        public System.Windows.Forms.ComboBox cmbModel;
+        public System.Windows.Forms.ComboBox cmbSeri;
+        public System.Windows.Forms.ComboBox cmbMarka;
+        public System.Windows.Forms.PictureBox picBoxAraba;
+        public System.Windows.Forms.Button btnKaydet;
+        public System.Windows.Forms.RichTextBox richBoxAciklama;
+        public System.Windows.Forms.Button btnGuncelle;
     }
 }
 

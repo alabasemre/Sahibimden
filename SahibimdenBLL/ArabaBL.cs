@@ -21,9 +21,9 @@ namespace SahibimdenBLL
         {
             List<Araba> marka = new List<Araba>();
 
-            SqlParameter[] p = { new SqlParameter("@id",id)};
+            SqlParameter[] p = { new SqlParameter("@id", id) };
 
-            SqlDataReader dr= help.ExecuteReader("SELECT araba_id,ad,ust_kategori FROM tbl_araba WHERE ust_kategori=@id",p);
+            SqlDataReader dr = help.ExecuteReader("SELECT araba_id,ad,ust_kategori FROM tbl_araba WHERE ust_kategori=@id", p);
 
             while (dr.Read())
             {
@@ -43,7 +43,7 @@ namespace SahibimdenBLL
             return marka;
         }
 
-        public List<Araba> SeriListele(int ustKat=0)
+        public List<Araba> SeriListele(int ustKat = 0)
         {
             List<Araba> marka = new List<Araba>();
 
@@ -64,9 +64,9 @@ namespace SahibimdenBLL
                 );
             }
             marka.Insert(0, new Araba { Ad = "Seçiniz..." });
-            dr.Close();          
+            dr.Close();
             return marka;
-        }      
+        }
 
         public List<Araba> MarkaAra(string ad)
         {
@@ -77,7 +77,7 @@ namespace SahibimdenBLL
             SqlDataReader dr = help.ExecuteReader("SELECT araba_id,ad,ust_kategori FROM tbl_araba WHERE ad=@ad", p);
 
             while (dr.Read())
-            {               
+            {
                 marka.Add
                 (
                     new Araba
@@ -88,26 +88,26 @@ namespace SahibimdenBLL
                     }
                 );
             }
-            
+
             dr.Close();
             return marka;
         }
 
         public DataTable MarkaListele()
         {
-            SqlParameter[] p = {new SqlParameter("@id",int.Parse("0")) };
-            return help.GetDataTable("SELECT araba_id,ad FROM tbl_araba WHERE ust_kategori=@id ",p);
+            SqlParameter[] p = { new SqlParameter("@id", int.Parse("0")) };
+            return help.GetDataTable("SELECT araba_id,ad FROM tbl_araba WHERE ust_kategori=@id ", p);
         }
 
         public bool ArabaEkle(Araba araba)
         {
             SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat", araba.UstKategori) };
-            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_araba (ad,ust_kategori) VALUES(@ad,@ustKat)",p);
+            return 0 < help.ExecuteNonQuery("INSERT INTO tbl_araba (ad,ust_kategori) VALUES(@ad,@ustKat)", p);
         }
 
         public bool Guncelle(Araba araba)
         {
-            SqlParameter[] p = { new SqlParameter("@id",araba.ArabaId),new SqlParameter("@ad", araba.Ad), new SqlParameter("@ustKat", araba.UstKategori) };
+            SqlParameter[] p = { new SqlParameter("@id", araba.ArabaId), new SqlParameter("@ad", araba.Ad), new SqlParameter("@ustKat", araba.UstKategori) };
             return 0 < help.ExecuteNonQuery("UPDATE tbl_araba SET ad=@ad,ust_kategori=@ustKat WHERE araba_id=@id", p);
         }
 
@@ -121,22 +121,52 @@ namespace SahibimdenBLL
         public bool KayitVarmi(Araba araba)
         {
             int adet = 0;
-            SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat",araba.UstKategori) };
+            SqlParameter[] p = { new SqlParameter("@ad", araba.Ad), new SqlParameter("ustKat", araba.UstKategori) };
 
-            SqlDataReader dr = help.ExecuteReader("SELECT COUNT(*) as Adet FROM tbl_araba WHERE ad=@ad AND ust_kategori=@ustKat",p);
+            SqlDataReader dr = help.ExecuteReader("SELECT COUNT(*) as Adet FROM tbl_araba WHERE ad=@ad AND ust_kategori=@ustKat", p);
 
             if (dr.Read())
             {
-               adet = (int)dr["Adet"];     
+                adet = (int)dr["Adet"];
             }
             dr.Close();
-            return adet==1;
+            return adet == 1;
+        }
+
+        public int ModelId(int id)
+        {
+            int arabaid = 0;
+            SqlParameter[] p = { new SqlParameter("@ilanid", id) };
+
+            SqlDataReader dr = help.ExecuteReader("SELECT araba_id FROM tbl_ilan WHERE ilan_id=@ilanid", p);
+
+            if (dr.Read())
+            {
+                arabaid = (int)dr["araba_id"];
+            }
+            dr.Close();
+            return arabaid;
+        }
+
+        public int MarkaSeriId(int id)
+        {
+            int arabaid = 0;
+            SqlParameter[] p = { new SqlParameter("@arabaid", id) };
+
+            SqlDataReader dr = help.ExecuteReader("SELECT ust_kategori FROM tbl_araba WHERE araba_id=@arabaid", p);
+
+            if (dr.Read())
+            {
+                arabaid = (int)dr["ust_kategori"];
+            }
+            dr.Close();
+            return arabaid;
         }
 
         public void Dispose()
         {
             ((IDisposable)help).Dispose();
-        }   
+        }
 
         public void Commit()
         {
